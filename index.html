@@ -293,7 +293,7 @@ p{color:var(--ink-soft);max-width:64ch}
   flex:1;display:flex;flex-direction:column;
   padding:84px 28px 28px;
 }
-.nav__mobile-links{display:flex;flex-direction:column;margin-bottom:28px}
+.nav__mobile-links{display:flex;flex-direction:column}
 .nav__mobile-links a{
   display:grid;grid-template-columns:36px 1fr;align-items:baseline;gap:16px;
   padding:16px 0;border-bottom:1px solid rgba(var(--on-dark-rgb),.10);
@@ -316,7 +316,7 @@ p{color:var(--ink-soft);max-width:64ch}
 }
 .nav__mobile-cta:hover{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
 .nav__mobile-meta{
-  padding-top:24px;border-top:1px solid rgba(var(--on-dark-rgb),.12);
+  padding-top:16px;
   display:flex;gap:18px;align-items:center;
 }
 .nav__mobile-icon{
@@ -327,8 +327,8 @@ p{color:var(--ink-soft);max-width:64ch}
 .nav__mobile-icon:hover{color:var(--accent-on-dark)}
 .nav__mobile-icon svg{display:block;width:22px;height:22px}
 .nav__mobile-art{
-  position:relative;flex:0 0 auto;height:240px;
-  margin:8px 0 28px;overflow:hidden;
+  position:relative;flex:0 0 auto;height:200px;
+  margin:20px 0 28px;overflow:hidden;
   border-top:1px solid rgba(var(--on-dark-rgb),.08);
 }
 .nav__mobile-art img{
@@ -1031,14 +1031,6 @@ p{color:var(--ink-soft);max-width:64ch}
       <a href="#unternehmen"><span class="nav__mobile-no">03</span><span class="nav__mobile-lbl">Unternehmen</span></a>
       <a href="#kontakt"><span class="nav__mobile-no">04</span><span class="nav__mobile-lbl">Kontakt</span></a>
     </nav>
-    <div class="nav__mobile-art" aria-hidden="true">
-      <img src="media/Gesichtsanalyse.jpg" alt="" />
-      <div class="nav__mobile-art__overlay"></div>
-      <div class="nav__mobile-art__caption">
-        <span class="nav__mobile-art__label">Aachen · seit 2005</span>
-        <span class="nav__mobile-art__tagline">The Art of<br/><em>Image Understanding.</em></span>
-      </div>
-    </div>
     <div class="nav__mobile-meta">
       <a href="mailto:info@cancontrols.com" class="nav__mobile-icon" aria-label="E-Mail an info@cancontrols.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
@@ -1057,6 +1049,14 @@ p{color:var(--ink-soft);max-width:64ch}
       <button type="button" class="nav__mobile-flag" aria-pressed="false" aria-label="English">
         <svg viewBox="0 0 22 16" aria-hidden="true"><defs><clipPath id="gb-m"><rect width="22" height="16"/></clipPath></defs><g clip-path="url(#gb-m)"><rect width="22" height="16" fill="#012169"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#C8102E" stroke-width="1.6"/><path d="M11 0 V16 M0 8 H22" stroke="#fff" stroke-width="4"/><path d="M11 0 V16 M0 8 H22" stroke="#C8102E" stroke-width="2.4"/></g></svg>
       </button>
+    </div>
+    <div class="nav__mobile-art" aria-hidden="true">
+      <img src="media/Gesichtsanalyse.jpg" alt="" />
+      <div class="nav__mobile-art__overlay"></div>
+      <div class="nav__mobile-art__caption">
+        <span class="nav__mobile-art__label">Aachen · seit 2005</span>
+        <span class="nav__mobile-art__tagline">The Art of<br/><em>Image Understanding.</em></span>
+      </div>
     </div>
   </div>
 </aside>
