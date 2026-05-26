@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>CanControls — Asset Download Helper</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --paper:#F4F0E7; --ink:#0F1620; --mute:#6B7480;
+    --accent:#095873; --accent-dark:#06425A; --rule:rgba(15,22,32,.12);
+    --paper-soft:#FBF8F2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:48px 32px}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:48px;letter-spacing:-.03em;margin:0 0 8px}
+  h1 em{font-style:italic;color:var(--accent-dark)}
+  .sub{color:var(--mute);max-width:60ch;font-size:15px;line-height:1.6;margin:0 0 32px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;max-width:1280px}
+  .card{background:var(--paper-soft);border:1px solid var(--rule);display:flex;flex-direction:column;overflow:hidden}
+  .card img{width:100%;height:200px;object-fit:cover;background:#0F1620;display:block}
+  .meta{padding:14px 16px 16px}
+  .name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);margin-bottom:8px;word-break:break-all}
+  .src{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mute);margin-bottom:12px;word-break:break-all;line-height:1.5}
+  .row{display:flex;gap:8px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;flex:1;
+    font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:10px 14px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;
+    text-decoration:none;text-align:center;
+  }
+  .btn:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+  .btn--alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn--alt:hover{background:var(--ink);color:var(--paper)}
+  .note{margin-top:32px;padding:18px 20px;background:var(--paper-soft);border-left:3px solid var(--accent);font-size:14px;line-height:1.65;color:var(--ink);max-width:780px}
+  .note b{font-weight:600}
+  code{font-family:'JetBrains Mono',monospace;background:rgba(15,22,32,.08);padding:1px 6px;font-size:.9em}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<h1>Asset Downloader <em>—</em> CanControls</h1>
+<p class="sub">Diese Seite zeigt alle Original-Bilder aus cancontrols.com. Klicke auf <b>Open</b> um das Bild in einem neuen Tab zu öffnen, dann Rechtsklick → "Bild speichern unter…" mit dem unter <b>Filename</b> vorgeschlagenen Namen. Für Power-User: <code>bash download.sh</code> im selben Ordner lädt alles automatisch via curl.</p>
+
+<div class="grid" id="grid"></div>
+
+<div class="note">
+  <b>Warum nicht direkt herunterladen?</b> Browser blockieren cross-origin Downloads über das <code>download</code>-Attribut — sie öffnen das Bild stattdessen im selben Tab. Daher öffnet <b>Open</b> jedes Bild in einem neuen Tab; von dort speicherst du es manuell. Schneller geht's mit dem <code>download.sh</code>-Script im selben Ordner.
+</div>
+
+<script>
+const ITEMS = [
+  ['CCLogo.png',              'https://www.cancontrols.com/wp-content/uploads/General/CCLogo.png',                                   'Logo'],
+  ['Gesichtsanalyse.jpg',     'https://www.cancontrols.com/wp-content/uploads/2016/04/Gesichtsanalyse_kl.jpg',                       'Hero + Feature card 01'],
+  ['Gestenanalyse.jpg',       'https://www.cancontrols.com/wp-content/uploads/2015/11/Gestenanalyse_klein.jpg',                      'Tech card 02'],
+  ['Personenanalyse.jpg',     'https://www.cancontrols.com/wp-content/uploads/2016/04/Personenanalyse_kl.jpg',                       'Tech card 03'],
+  ['Oberflaechenanalyse.jpg', 'https://www.cancontrols.com/wp-content/uploads/2015/11/Oberfl%C3%A4chenanalyse_klein.jpg',             'Tech card 04'],
+  ['Automobilbau.jpg',        'https://www.cancontrols.com/wp-content/uploads/2015/11/Automobilbau_klein.jpg',                       'Bereich 01 Automotive'],
+  ['Luft-und-Raumfahrt.jpg',  'https://www.cancontrols.com/wp-content/uploads/2015/11/Luft-und-Raumfahrt_klein.jpg',                 'Bereich 02 Aerospace'],
+  ['Medizin.jpg',             'https://www.cancontrols.com/wp-content/uploads/2015/11/Medizin_klein.jpg',                            'Bereich 03 Medical'],
+  ['Strassenwesen.jpg',       'https://www.cancontrols.com/wp-content/uploads/2015/11/Strassenwesen_klein.jpg',                      'Bereich 04 Traffic'],
+  ['Unterhaltung.jpg',        'https://www.cancontrols.com/wp-content/uploads/2015/11/Unterhaltung_klein.jpg',                       'Bereich 05 Entertainment'],
+  ['Exponate.jpg',            'https://www.cancontrols.com/wp-content/uploads/2015/11/Exponate_klein.jpg',                           'Bereich 06 Exhibits'],
+  ['Sicherheit.jpg',          'https://www.cancontrols.com/wp-content/uploads/2015/11/Sicherheit_klein.jpg',                         'Bereich 07 Security'],
+];
+
+const grid = document.getElementById('grid');
+for (const [name, url, label] of ITEMS){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <img src="${url}" alt="${label}" loading="lazy" />
+    <div class="meta">
+      <div class="name">${label} · <code>${name}</code></div>
+      <div class="src">${url}</div>
+      <div class="row">
+        <a class="btn" href="${url}" target="_blank" rel="noopener">Open in tab</a>
+        <a class="btn btn--alt" href="${url}" download="${name}">Try download</a>
+      </div>
+    </div>`;
+  grid.appendChild(card);
+}
+</script>
+</body>
+</html>

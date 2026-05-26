@@ -1,0 +1,140 @@
+/* ============================================================
+   CanControls — Design Tokens
+   Drop-in for any framework. Maps cleanly to:
+   - Tailwind config (theme.extend.colors/fontFamily/spacing)
+   - CSS Modules / vanilla CSS variables
+   - styled-components ThemeProvider
+   ============================================================ */
+
+:root {
+  /* ── BRAND ────────────────────────────────────── */
+  --accent:           #095873;   /* petrol (core:form sibling palette) */
+  --accent-dark:      #06425A;   /* hover for accent */
+  --accent-rgb:       9, 88, 115;
+
+  --accent-on-dark:   #5BB0CF;   /* lighter petrol — only on dark surfaces */
+  --accent-on-dark-rgb: 91, 176, 207;
+
+  --italic-on-dark:   #F1D8A6;   /* warm sand for <em> inside dark sections */
+
+  /* ── INK / TEXT ───────────────────────────────── */
+  --ink:              #0F1620;
+  --ink-rgb:          15, 22, 32;
+  --ink-soft:         #2A3540;   /* body text on paper */
+  --mute:             #6B7480;   /* labels, tertiary */
+
+  /* ── SURFACES (light) ─────────────────────────── */
+  --paper:            #F4F0E7;   /* primary page bg */
+  --paper-rgb:        244, 240, 231;
+  --paper-soft:       #FBF8F2;   /* cards on paper */
+  --surface:          #E9E2D2;   /* warm oat — section tint */
+  --surface-rgb:      233, 226, 210;
+  --surface-deep:     #DDD5C3;
+
+  /* ── SURFACES (dark) ──────────────────────────── */
+  --dark:             #0C1218;   /* hero, contact, banner */
+  --dark-2:           #11181F;   /* cards on dark */
+  --on-dark:          #EFEAE0;
+  --on-dark-rgb:      239, 234, 224;
+  --on-dark-mute:     rgba(239, 234, 224, .66);
+
+  /* ── DIVIDERS / RULES ─────────────────────────── */
+  --rule:             rgba(15, 22, 32, .10);
+  --rule-soft:        rgba(15, 22, 32, .06);
+  --on-dark-rule:     rgba(239, 234, 224, .14);
+  --on-dark-rule-soft:rgba(239, 234, 224, .08);
+
+  /* ── TYPE ─────────────────────────────────────── */
+  --font-body:        "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display:     "Bricolage Grotesque", "DM Sans", sans-serif;
+  --font-mono:        "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* type scale (responsive via clamp) */
+  --fs-h1:            clamp(40px, 5.8vw, 80px);
+  --fs-h2:            clamp(32px, 4.4vw, 56px);
+  --fs-h3:            clamp(22px, 2.2vw, 28px);
+  --fs-body:          16px;
+  --fs-lead:          clamp(20px, 2.1vw, 26px);
+  --fs-label:         11px;
+  --fs-meta:          10px;
+
+  --lh-display:       1.04;
+  --lh-body:          1.65;
+  --lh-lead:          1.45;
+
+  --ls-h1:            -0.035em;
+  --ls-h2:            -0.030em;
+  --ls-h3:            -0.020em;
+  --ls-label:         0.16em;
+  --ls-button:        0.18em;
+  --ls-meta:          0.18em;
+
+  --fw-display:       300;
+  --fw-display-bold:  400;
+  --fw-body:          400;
+  --fw-body-medium:   500;
+  --fw-body-bold:     700;
+  --fw-mono:          500;
+
+  /* ── LAYOUT ───────────────────────────────────── */
+  --nav-h:            80px;
+  --container:        1180px;
+  --pad-x:            40px;       /* tablet 28px / mobile 20px */
+
+  --section-pad:      120px;       /* tablet/mobile 80px */
+  --section-pad-lg:   140px;       /* hero contact banner */
+
+  /* ── RADIUS ───────────────────────────────────── */
+  /* NONE. Sharp corners only. Pin/compass exceptions hardcoded. */
+  --radius:           0;
+
+  /* ── SHADOWS ──────────────────────────────────── */
+  --shadow-card-hover: 0 14px 32px rgba(0, 0, 0, .08);
+  --shadow-logo:       drop-shadow(0 1px 2px rgba(0, 0, 0, .35));
+
+  /* ── MOTION ───────────────────────────────────── */
+  --t-fast:           0.20s ease;
+  --t-base:           0.25s ease;
+  --t-smooth:         0.35s cubic-bezier(.22, 1, .36, 1);
+  --t-reveal:         0.60s cubic-bezier(.22, 1, .36, 1);
+
+  --marquee-speed:    65;          /* px/sec — used by JS rAF loop */
+  --parallax-rate:    0.5;         /* hero image scrolls at 50% of page scroll */
+
+  /* ── Z-INDEX ──────────────────────────────────── */
+  --z-nav:            100;
+  --z-mobile-menu:    99;
+  --z-skip-link:      1000;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --pad-x: 28px;
+    --section-pad: 80px;
+    --section-pad-lg: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad-x: 20px;
+    --nav-h: 72px;
+  }
+}
+
+/* ============================================================
+   FOCUS — accessibility floor; do not remove
+   ============================================================ */
+:focus { outline: 0; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(var(--accent-rgb), .16);
+  color: var(--ink);
+}
