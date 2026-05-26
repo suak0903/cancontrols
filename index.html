@@ -986,9 +986,70 @@ p{color:var(--ink-soft);max-width:64ch}
   .bereich-grid .kurs-card--feature{grid-column:1}
 }
 
+/* ============ INTRO ANIMATION — computer vision themed ============ */
+@keyframes hero-scan{
+  0%   { top:0;        opacity:0 }
+  10%  {               opacity:1 }
+  92%  {               opacity:1 }
+  100% { top:100%;     opacity:0 }
+}
+@keyframes hero-img-resolve{
+  0%   { opacity:.08; filter:saturate(0) brightness(.55) contrast(1.35) }
+  55%  { opacity:.35; filter:saturate(.45) brightness(.85) contrast(1.15) }
+  100% { opacity:.55; filter:saturate(.78) brightness(1) contrast(1.05) }
+}
+@keyframes hero-viewfinder{
+  0%   { opacity:0; transform:translate(-50%,-50%) scale(.7) }
+  30%  { opacity:1; transform:translate(-50%,-50%) scale(1) }
+  72%  { opacity:1; transform:translate(-50%,-50%) scale(1) }
+  100% { opacity:0; transform:translate(-50%,-50%) scale(1.12) }
+}
+@keyframes hero-grid-pulse{
+  0%   { opacity:0 }
+  45%  { opacity:.55 }
+  100% { opacity:.30 }
+}
+@keyframes hero-content-rise{
+  from { opacity:0; transform:translateY(18px) }
+  to   { opacity:1; transform:translateY(0) }
+}
+
+.hero__scan{
+  position:absolute;left:0;right:0;top:0;height:2px;z-index:3;
+  background:linear-gradient(90deg,transparent 4%,rgba(91,176,207,.95) 50%,transparent 96%);
+  box-shadow:0 0 28px 6px rgba(91,176,207,.45),0 0 80px 14px rgba(91,176,207,.22);
+  pointer-events:none;
+  animation:hero-scan 1.8s cubic-bezier(.55,.05,.45,1) .15s both;
+}
+
+.hero__viewfinder{
+  position:absolute;top:46%;left:50%;
+  width:230px;height:300px;
+  transform:translate(-50%,-50%);
+  z-index:3;pointer-events:none;opacity:0;
+  animation:hero-viewfinder 2s cubic-bezier(.22,1,.36,1) .7s both;
+}
+.hero__viewfinder-corner{position:absolute;width:22px;height:22px;border:0 solid var(--accent-on-dark)}
+.hero__viewfinder-corner--tl{top:0;left:0;border-top-width:2px;border-left-width:2px}
+.hero__viewfinder-corner--tr{top:0;right:0;border-top-width:2px;border-right-width:2px}
+.hero__viewfinder-corner--bl{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.hero__viewfinder-corner--br{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+
+.hero__img{animation:hero-img-resolve 2s cubic-bezier(.22,1,.36,1) both}
+.hero__grid{animation:hero-grid-pulse 1.6s cubic-bezier(.22,1,.36,1) .3s both}
+
+.hero__content .container > *{opacity:0;animation:hero-content-rise .8s cubic-bezier(.22,1,.36,1) both}
+.hero__content .container > .hero__eyebrow{animation-delay:1.05s}
+.hero__content .container > .hero__headline{animation-delay:1.25s}
+.hero__content .container > .hero__lead{animation-delay:1.50s}
+.hero__content .container > .hero__sub{animation-delay:1.70s}
+.hero__content .container > .hero__actions{animation-delay:1.90s}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .hero__marquee-track{animation:none}
+  .hero__scan,.hero__viewfinder{display:none}
+  .hero__content .container > *{opacity:1}
 }
 </style>
 </head>
@@ -1070,6 +1131,13 @@ p{color:var(--ink-soft);max-width:64ch}
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__grain" aria-hidden="true"></div>
   <div class="hero__corner" aria-hidden="true">CanControls · Aachen · est. 2005</div>
+  <div class="hero__scan" aria-hidden="true"></div>
+  <div class="hero__viewfinder" aria-hidden="true">
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--tl"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--tr"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--bl"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--br"></span>
+  </div>
 
   <div class="hero__content">
     <div class="container">
