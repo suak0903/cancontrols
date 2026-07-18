@@ -26,7 +26,7 @@
 .toc a{display:flex;align-items:center;gap:9px;border:1px solid rgba(244,240,231,.22);color:#F4F0E7;text-decoration:none;font-size:13.5px;font-weight:600;padding:11px 12px;transition:background .3s ease,border-color .3s ease}
 .toc a:hover{background:rgba(255,255,255,.08);border-color:#5BB0CF}
 .toc .num{font-family:'JetBrains Mono',ui-monospace,monospace;color:#5BB0CF;font-size:11px;font-weight:700;letter-spacing:.08em}
-.toc-top{position:fixed;right:22px;bottom:74px;z-index:90;width:46px;height:46px;background:#0B1A22;border:1px solid rgba(244,240,231,.22);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.toc-top{position:fixed;right:12px;bottom:84px;z-index:90;width:38px;height:38px;background:#0B1A22;border:1px solid rgba(244,240,231,.22);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .toc-top.show{opacity:1;pointer-events:auto}
 .toc-top:hover{background:#095873}
 .toc-top svg{width:18px;height:18px}
@@ -50,24 +50,43 @@
 
 /* Ausbau-Skala */
 .scale{margin-top:54px}
-.scale__caps{display:flex;justify-content:space-between;gap:14px;font-size:13px;color:#6B7480;margin-bottom:14px}
+
+/* ===== Ausbau-Skala (Suat 18.07.: Stufen positionsverankert, Labels ohne Ueberlappung) ===== */
+.scale__caps{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;font-size:12.5px;line-height:1.4;color:#6B7480;margin-bottom:10px}
+.scale__caps>span{flex:1 1 0;min-width:0}
 .scale__caps .mid{text-align:center}
 .scale__caps .end{text-align:right}
-.scale__caps b{color:#0F1620}
-.scale__track{position:relative;height:10px;background:#E9E2D2;margin:34px 0 6px}
+.scale__caps b{color:#0F1620;white-space:nowrap}
+.scale__track{position:relative;height:10px;margin-top:56px;background:#E9E2D2;margin:56px 0 0}
 .scale__fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(9,88,115,.28),#095873)}
 .scale__mk{position:absolute;top:50%}
-.scale__mk i{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:16px;height:16px;background:#fff;border:3px solid #0F1620}
+.scale__mk i{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:16px;height:16px;background:#fff;border:3px solid #0F1620;border-radius:50%}
 .scale__mk--rec i{border-color:#095873}
-.scale__lab{position:absolute;left:0;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;font-weight:700;letter-spacing:.04em}
-.scale__mk--now .scale__lab{top:16px;color:#0F1620}
-.scale__mk--ist .scale__lab{top:36px;color:#6B7480}
-.scale__mk--rec .scale__lab{bottom:16px;color:#095873}
-.scale__nums{display:flex;justify-content:space-between;font-size:12px;color:#6B7480;margin-top:36px}
-.scale__why{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.6;color:#0F1620}
+.scale__lab{position:absolute;left:0;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;font-weight:700;letter-spacing:.03em}
+/* drei getrennte Zonen - nichts liegt uebereinander */
+.scale__mk--rec .scale__lab{bottom:20px;color:#095873}
+.scale__mk--now .scale__lab{top:20px;color:#0F1620}
+.scale__mk--ist .scale__lab{top:44px;color:#6B7480}
+/* Randmarker: Label nach innen versetzen, damit es nicht aus dem Container laeuft */
+.scale__mk--edge-r .scale__lab{transform:translateX(-88%)}
+.scale__mk--edge-l .scale__lab{transform:translateX(-12%)}
+.scale__nums{display:flex;justify-content:space-between;font-size:12px;color:#6B7480;margin-top:74px}
+.scale--2mk .scale__nums{margin-top:52px}
+.scale__why{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.6;color:#0F1620}
 .scale__why li{padding-left:16px;position:relative}
 .scale__why li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:#095873}
 .scale__why b{color:#095873}
+@media(max-width:760px){
+  /* Stufen bleiben dreispaltig an der Skala verankert, nur kleiner */
+  .scale__caps{font-size:10.5px;gap:6px}
+  .scale__track{margin-top:84px}
+  .scale__lab{white-space:normal;width:96px;text-align:center;font-size:10.5px;line-height:1.25}
+  .scale__mk--edge-r .scale__lab{transform:translateX(-78%)}
+  .scale__mk--edge-l .scale__lab{transform:translateX(-22%)}
+  .scale__mk--ist .scale__lab{top:56px}
+  .scale__nums{font-size:10.5px;margin-top:100px}
+  .scale--2mk .scale__nums{margin-top:64px}
+}
 
 /* Design-System */
 .ds{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -122,8 +141,6 @@
   .h-cards,.ds,.why{grid-template-columns:1fr}
   .metrics{grid-template-columns:1fr 1fr}
   .refs{grid-template-columns:1fr}
-  .scale__caps{flex-direction:column;gap:5px}
-  .scale__caps .mid,.scale__caps .end{text-align:left}
   .cmp{font-size:13.5px}
   .cmp td:first-child{width:34%}
 }
