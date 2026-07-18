@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Über diesen Entwurf · CanControls</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/jpeg" href="media/CC-Logo-klein.jpg" />
+
+
+<link rel="stylesheet" href="css/site.css">
+
+<style>
+/* ============================================================
+   HINWEISSEITE (Kit-Standard: Demonstrator-Hinweise.md)
+   Mini-ToC, Ausbau-Skala, Design-System, Vergleich, Referenzen
+   ============================================================ */
+.h-sub{background:#0B1A22;color:#F4F0E7;padding:128px 0 60px}
+.h-sub__crumb{font-size:13px;color:rgba(244,240,231,.72);margin-bottom:16px}
+.h-sub__crumb a{color:#5BB0CF;text-decoration:none}
+.h-sub__crumb a:hover{text-decoration:underline}
+.h-eyebrow{display:inline-block;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#5BB0CF;margin-bottom:14px}
+.h-sub h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,5vw,58px);line-height:1.04;margin:0 0 14px;color:#F4F0E7}
+.h-sub__lede{font-size:17px;line-height:1.6;color:rgba(244,240,231,.72);max-width:62ch;margin:0}
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:34px;max-width:900px}
+.toc a{display:flex;align-items:center;gap:9px;border:1px solid rgba(244,240,231,.22);color:#F4F0E7;text-decoration:none;font-size:13.5px;font-weight:600;padding:11px 12px;transition:background .3s ease,border-color .3s ease}
+.toc a:hover{background:rgba(255,255,255,.08);border-color:#5BB0CF}
+.toc .num{font-family:'JetBrains Mono',ui-monospace,monospace;color:#5BB0CF;font-size:11px;font-weight:700;letter-spacing:.08em}
+.toc-top{position:fixed;right:22px;bottom:74px;z-index:90;width:46px;height:46px;background:#0B1A22;border:1px solid rgba(244,240,231,.22);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.toc-top.show{opacity:1;pointer-events:auto}
+.toc-top:hover{background:#095873}
+.toc-top svg{width:18px;height:18px}
+
+.h-body{background:#F4F0E7;padding:72px 0 96px}
+.h-sec{max-width:1080px;margin:0 auto;padding:0 24px}
+.h-sec + .h-sec{margin-top:72px}
+.h-sec__head{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.4vw,34px);line-height:1.12;color:#0F1620;margin:0 0 10px}
+.h-sec__lede{color:#6B7480;max-width:66ch;margin:0 0 30px;line-height:1.65}
+.note-box{border:1px solid rgba(15,22,32,.12);border-left:3px solid #095873;background:#E9E2D2;padding:18px 22px;font-size:15px;line-height:1.65;color:#0F1620}
+.note-box b{color:#095873}
+
+.h-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+.h-card{background:#fff;border:1px solid rgba(15,22,32,.12);padding:26px 26px 22px}
+.h-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;color:#0F1620;margin:0 0 16px}
+.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;font-size:14.5px;line-height:1.5;color:#0F1620}
+.chk li{display:flex;gap:10px;align-items:flex-start}
+.chk svg{flex:none;width:18px;height:18px;margin-top:2px}
+.chk .ok{color:#095873}
+.chk .todo{color:#6B7480}
+
+/* Ausbau-Skala */
+.scale{margin-top:54px}
+.scale__caps{display:flex;justify-content:space-between;gap:14px;font-size:13px;color:#6B7480;margin-bottom:14px}
+.scale__caps .mid{text-align:center}
+.scale__caps .end{text-align:right}
+.scale__caps b{color:#0F1620}
+.scale__track{position:relative;height:10px;background:#E9E2D2;margin:34px 0 6px}
+.scale__fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(9,88,115,.28),#095873)}
+.scale__mk{position:absolute;top:50%}
+.scale__mk i{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:16px;height:16px;background:#fff;border:3px solid #0F1620}
+.scale__mk--rec i{border-color:#095873}
+.scale__lab{position:absolute;left:0;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;font-weight:700;letter-spacing:.04em}
+.scale__mk--now .scale__lab{top:16px;color:#0F1620}
+.scale__mk--ist .scale__lab{top:36px;color:#6B7480}
+.scale__mk--rec .scale__lab{bottom:16px;color:#095873}
+.scale__nums{display:flex;justify-content:space-between;font-size:12px;color:#6B7480;margin-top:36px}
+.scale__why{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.6;color:#0F1620}
+.scale__why li{padding-left:16px;position:relative}
+.scale__why li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:#095873}
+.scale__why b{color:#095873}
+
+/* Design-System */
+.ds{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.ds__sw{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ds__c{display:flex;flex-direction:column;gap:7px;font-size:13px}
+.ds__chip{height:74px;border:1px solid rgba(15,22,32,.12)}
+.ds__c .hex{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:700;color:#0F1620;letter-spacing:.04em}
+.ds__c .nm{color:#6B7480}
+.ds__type p{margin:0 0 14px;color:#6B7480;line-height:1.65;font-size:15px}
+.ds__type .spec{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;color:#0F1620;margin-bottom:4px}
+
+/* Vergleichstabelle */
+.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-size:14.5px}
+.cmp th,.cmp td{text-align:left;padding:13px 14px;border-bottom:1px solid rgba(15,22,32,.12);vertical-align:top}
+.cmp thead th{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B7480;border-bottom:1px solid #0F1620}
+.cmp td:first-child{font-weight:700;color:#0F1620;width:26%}
+.cmp .alt{color:#6B7480}
+.cmp .neu{color:#0F1620}
+.cmp .neu b{color:#095873}
+
+/* Metriken */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.metric{background:#fff;border:1px solid rgba(15,22,32,.12);padding:20px}
+.metric .lbl{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6B7480;margin-bottom:10px}
+.metric .val{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;color:#095873;line-height:1.1}
+.metric .old{font-size:13px;color:#6B7480;margin-top:6px}
+
+/* Warum ich */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:26px}
+.why__c{background:#fff;border:1px solid rgba(15,22,32,.12);border-top:3px solid #095873;padding:24px}
+.why__c h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;color:#0F1620;margin:0 0 10px}
+.why__c p{margin:0;font-size:14.5px;line-height:1.6;color:#6B7480}
+
+/* Referenz-Riege */
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.ref{background:#fff;border:1px solid rgba(15,22,32,.12);display:flex;flex-direction:column;overflow:hidden}
+.ref__shot{display:block;width:100%;height:auto;border-bottom:1px solid rgba(15,22,32,.12)}
+.ref__body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ref__body h4{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;color:#0F1620;margin:0}
+.ref__body p{margin:0;font-size:13.5px;line-height:1.55;color:#6B7480;flex:1}
+.ref__body a{font-size:13px;font-weight:700;color:#095873;text-decoration:none}
+.ref__body a:hover{text-decoration:underline}
+.ref__extra{border-top:1px solid rgba(15,22,32,.12);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.ref__extra .lbl{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6B7480}
+
+.h-end{margin-top:64px;border:1px solid rgba(15,22,32,.12);background:#E9E2D2;padding:26px 28px;font-size:15px;line-height:1.7;color:#0F1620}
+.h-end b{color:#095873}
+.h-end a{color:#095873;font-weight:700}
+
+@media(max-width:860px){
+  .toc{grid-template-columns:1fr 1fr}
+  .h-cards,.ds,.why{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr}
+  .scale__caps{flex-direction:column;gap:5px}
+  .scale__caps .mid,.scale__caps .end{text-align:left}
+  .cmp{font-size:13.5px}
+  .cmp td:first-child{width:34%}
+}
+</style>
+</head>
+<body data-screen-label="CanControls Home">
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="CanControls Startseite">
+      <img src="media/CCLogo.png" alt="CanControls" />
+    </a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="#technologie">Technologie</a>
+      <a href="#bereiche">Bereiche</a>
+      <a href="#unternehmen">Unternehmen</a>
+      <span class="nav__lang">
+        <button type="button" class="nav__flag is-active" aria-pressed="true" aria-label="Deutsch">
+          <svg viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="#000"/><rect y="5.33" width="22" height="5.34" fill="#DD0000"/><rect y="10.67" width="22" height="5.33" fill="#FFCE00"/></svg>
+        </button>
+        <button type="button" class="nav__flag" aria-pressed="false" aria-label="English">
+          <svg viewBox="0 0 22 16" aria-hidden="true"><defs><clipPath id="gb-d"><rect width="22" height="16"/></clipPath></defs><g clip-path="url(#gb-d)"><rect width="22" height="16" fill="#012169"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#C8102E" stroke-width="1.6"/><path d="M11 0 V16 M0 8 H22" stroke="#fff" stroke-width="4"/><path d="M11 0 V16 M0 8 H22" stroke="#C8102E" stroke-width="2.4"/></g></svg>
+        </button>
+      </span>
+      <a class="btn btn--accent nav__cta-btn" href="#kontakt">Kontakt <span class="btn__arrow" aria-hidden="true"></span></a>
+    </nav>
+    <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<aside class="nav__mobile" id="mobile-menu" aria-hidden="true">
+  <div class="nav__mobile-body">
+    <nav class="nav__mobile-links" aria-label="Mobile Navigation">
+      <a href="#technologie"><span class="nav__mobile-no">01</span><span class="nav__mobile-lbl">Technologie</span></a>
+      <a href="#bereiche"><span class="nav__mobile-no">02</span><span class="nav__mobile-lbl">Bereiche</span></a>
+      <a href="#unternehmen"><span class="nav__mobile-no">03</span><span class="nav__mobile-lbl">Unternehmen</span></a>
+      <a href="#kontakt"><span class="nav__mobile-no">04</span><span class="nav__mobile-lbl">Kontakt</span></a>
+    </nav>
+    <div class="nav__mobile-meta">
+      <a href="mailto:info@cancontrols.com" class="nav__mobile-icon" aria-label="E-Mail an info@cancontrols.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14"/>
+          <polyline points="3 5 12 13 21 5"/>
+        </svg>
+      </a>
+      <a href="tel:+4924147582260" class="nav__mobile-icon" aria-label="Anruf +49 241 47582260">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <path d="M5 3h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C9 21 3 15 3 5c0-1 1-2 2-2z"/>
+        </svg>
+      </a>
+      <button type="button" class="nav__mobile-flag is-active" aria-pressed="true" aria-label="Deutsch">
+        <svg viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="#000"/><rect y="5.33" width="22" height="5.34" fill="#DD0000"/><rect y="10.67" width="22" height="5.33" fill="#FFCE00"/></svg>
+      </button>
+      <button type="button" class="nav__mobile-flag" aria-pressed="false" aria-label="English">
+        <svg viewBox="0 0 22 16" aria-hidden="true"><defs><clipPath id="gb-m"><rect width="22" height="16"/></clipPath></defs><g clip-path="url(#gb-m)"><rect width="22" height="16" fill="#012169"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#C8102E" stroke-width="1.6"/><path d="M11 0 V16 M0 8 H22" stroke="#fff" stroke-width="4"/><path d="M11 0 V16 M0 8 H22" stroke="#C8102E" stroke-width="2.4"/></g></svg>
+      </button>
+    </div>
+    <div class="nav__mobile-art" aria-hidden="true">
+      <img src="media/Gesichtsanalyse.jpg" alt="" />
+      <div class="nav__mobile-art__overlay"></div>
+      <div class="nav__mobile-art__caption">
+        <span class="nav__mobile-art__label">Aachen · seit 2005</span>
+        <span class="nav__mobile-art__tagline">The Art of<br/><em>Image Understanding.</em></span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main id="main">
+
+<section class="h-sub">
+  <div class="h-sec">
+    <p class="h-sub__crumb"><a href="index.html">Start</a> / Über diesen Entwurf</p>
+    <span class="h-eyebrow">Redesign-Entwurf</span>
+    <h1>Über diesen Entwurf.</h1>
+    <p class="h-sub__lede">Wie dieser Entwurf für CanControls entstanden ist, was er anders macht und was eine Umsetzung bedeuten würde. Alles auf einen Blick, bevor Sie irgendetwas entscheiden.</p>
+    <nav class="toc" aria-label="Inhalt dieser Seite">
+        <a href="#neu"><span class="num">01</span>Neu gebaut</a>
+        <a href="#skala"><span class="num">02</span>Ausbau-Skala</a>
+        <a href="#design"><span class="num">03</span>Design</a>
+        <a href="#vergleich"><span class="num">04</span>Vergleich</a>
+        <a href="#warum"><span class="num">05</span>Warum ich</a>
+        <a href="#referenzen"><span class="num">06</span>Referenzen</a>
+    </nav>
+  </div>
+</section>
+
+<div class="h-body">
+
+  <section class="h-sec" id="neu" style="scroll-margin-top:90px">
+    <div class="note-box" style="margin-bottom:44px">
+      <b>Bitte beachten.</b> Dieser Entwurf ist unverbindlich und für Suchmaschinen gesperrt. Er wurde ausschließlich aus öffentlich verfügbaren Inhalten und Bildern von cancontrols.com zusammengestellt, steht in keiner Verbindung zum offiziellen Auftritt und konkurriert nicht mit dem Original. Auf Wunsch wird er jederzeit vollständig entfernt.
+    </div>
+
+    <h2 class="h-sec__head">Ihre Technologie, verständlich erzählt.</h2>
+    <p class="h-sec__lede">Die heutige Seite trägt die Inhalte, verteilt sie aber über ein gewachsenes Baukasten-System. Für diesen Entwurf wurden Ihre Texte und Bilder übernommen und in eine klare Erzählung gebracht: erst was Sie können, dann wo es eingesetzt wird, dann wer dahintersteht. Der Entwurf ist zugleich als visuelle Vorlage gedacht, falls Ihr Team später mit einem modernen Framework weiterbaut.</p>
+
+    <div class="h-cards">
+      <div class="h-card">
+        <h3>Fertig und funktionsfähig</h3>
+        <ul class="chk">
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Eigenes Design aus Ihrem Logo und den Bildwelten der Bestandsseite</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Technologie, Anwendungsfelder und Unternehmen als eine klare Erzählung</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Für Smartphone, Tablet und Desktop gebaut und getestet</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Schriften vom eigenen Server, keine Cookies, keine fremden Tracker</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sprachumschalter Deutsch und Englisch angelegt</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Als Vorlage für eine spätere Umsetzung im eigenen Framework nutzbar</li>
+        </ul>
+      </div>
+      <div class="h-card">
+        <h3>Für den Live-Betrieb offen</h3>
+        <ul class="chk">
+            <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Englische Fassung inhaltlich vollständig ausformulieren</li>
+            <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Eigene Seiten je Technologiefeld und ein Publikationsbereich</li>
+            <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Karriereseite mit echten Stellenangeboten anbinden</li>
+            <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Auf die eigene Domain legen und für Suchmaschinen freigeben</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scale" id="skala" style="scroll-margin-top:90px">
+      <h2 class="h-sec__head">Einordnung auf der Ausbau-Skala.</h2>
+      <p class="h-sec__lede">Von der einfachen Ein-Seiten-Lösung bis zur High-End-Plattform. Wo dieser Entwurf liegt, danach richten sich Aufwand und Preis.</p>
+      <div class="scale__caps">
+        <span><b>0-1</b> einfache Seite, ohne Unterseiten und Formulare</span>
+        <span class="mid"><b>~5</b> mehrseitiger Auftritt: Formular, SEO und GEO, Mediengalerie, News</span>
+        <span class="end"><b>10</b> All-In: Online-Buchung, CMS, Login, KI-Assistent, Analytics</span>
+      </div>
+      <div class="scale__track">
+        <div class="scale__fill" style="width:55%"></div>
+        <div class="scale__mk scale__mk--now" style="left:30%"><i></i><span class="scale__lab">Dieser Entwurf</span></div>
+        <div class="scale__mk scale__mk--ist" style="left:45%"><i style="border-color:#6B7480"></i><span class="scale__lab">Ihr Bestand, neu gebaut</span></div>
+        <div class="scale__mk scale__mk--rec" style="left:55%"><i></i><span class="scale__lab">Meine Empfehlung</span></div>
+      </div>
+      <div class="scale__nums"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+      <ul class="scale__why">
+        <li><b>Dieser Entwurf (~3):</b> ein durchgestalteter One-Pager, der Technologie, Anwendungsfelder und Unternehmen erzählt. Bewusst ein Bauplan, kein Vollausbau.</li>
+        <li><b>Ihr heutiger Auftritt liegt bei ~4,5:</b> mehrere Unterseiten, zweisprachig, Karrierebereich und News, technisch auf WordPress. Ehrlich gezählt, im Neuaufbau entsprechend mehr Arbeit als dieser Entwurf.</li>
+        <li><b>Meine Empfehlung (~5,5):</b> die neue Optik plus eigene Technologie-Unterseiten, ein Publikations- und News-Bereich und eine saubere zweisprachige Struktur. Damit findet Sie auch, wer nach Fachbegriffen sucht.</li>
+        <li><b>Nach oben offen:</b> Demo-Bereich mit Beispielvideos, Login für Projektpartner, datensparsame Auswertung der Besucherzahlen. Jederzeit nachrüstbar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="h-sec" id="design" style="scroll-margin-top:90px">
+    <h2 class="h-sec__head">Farben und Schrift.</h2>
+    <p class="h-sec__lede">Die Farben stammen aus Ihrem Logo und den Aufnahmen der Bestandsseite. Technisch, aber nicht kalt.</p>
+    <div class="ds">
+      <div class="ds__sw">
+          <div class="ds__c"><span class="ds__chip" style="background:#095873"></span><span class="hex">#095873</span><span class="nm">Petrol, aus Ihrem Logo</span></div>
+          <div class="ds__c"><span class="ds__chip" style="background:#5BB0CF"></span><span class="hex">#5BB0CF</span><span class="nm">Helles Petrol für dunkle Flächen</span></div>
+          <div class="ds__c"><span class="ds__chip" style="background:#F4F0E7"></span><span class="hex">#F4F0E7</span><span class="nm">Warmes Papier als Grundton</span></div>
+          <div class="ds__c"><span class="ds__chip" style="background:#E9E2D2"></span><span class="hex">#E9E2D2</span><span class="nm">Sand für ruhige Abschnitte</span></div>
+      </div>
+      <div class="ds__type">
+        <div class="spec">Bricolage Grotesque</div>
+        <p>Für Überschriften. Eine Schrift ohne die kleinen Häkchen an den Buchstabenenden, präzise und mit technischem Charakter. Passt zu einem Unternehmen, das Bilder maschinell versteht.</p>
+        <div class="spec" style="font-family:'DM Sans',sans-serif">DM Sans</div>
+        <p>Für den Fließtext. Ruhig und auch in kleinen Größen gut lesbar. Beide Schriften liegen auf dem eigenen Server, es werden keine Daten an Dritte übertragen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-sec" id="vergleich" style="scroll-margin-top:90px">
+    <h2 class="h-sec__head">Was der Entwurf anders macht.</h2>
+    <p class="h-sec__lede">Ehrlich gegenübergestellt. Die Zahlen unten wurden am 18. Juli 2026 an der heutigen Seite gemessen.</p>
+    <table class="cmp">
+      <thead><tr><th>Merkmal</th><th>Bisherige Seite</th><th>Dieser Entwurf</th></tr></thead>
+      <tbody>
+            <tr><td>Erzählung</td><td class="alt">Inhalte über ein gewachsenes Baukasten-System verteilt</td><td class="neu">Eine <b>durchgehende Geschichte</b> vom Können zur Anwendung</td></tr>
+            <tr><td>Auffindbar bei Google</td><td class="alt">Keine Seitenbeschreibung, kein Social-Vorschaubild</td><td class="neu">Vollständige <b>Beschreibung</b> plus Vorschaubild</td></tr>
+            <tr><td>Auffindbar für KI-Suche</td><td class="alt">Keine strukturierten Daten hinterlegt</td><td class="neu"><b>Strukturierte Daten</b> zu Unternehmen und Fachgebieten vorbereitet</td></tr>
+            <tr><td>Technischer Unterbau</td><td class="alt">WordPress mit 15 nachgeladenen Skripten, 161 KB Startseite</td><td class="neu"><b>Reines HTML</b>, ein Stylesheet, unter 60 KB</td></tr>
+            <tr><td>Datenschutz</td><td class="alt">Externe Skripte und Baukasten-Bausteine</td><td class="neu">Alles vom eigenen Server, <b>keine Cookies</b></td></tr>
+            <tr><td>Weiterverwendung</td><td class="alt">An das Baukasten-System gebunden</td><td class="neu"><b>Vorlage für jedes moderne Framework</b>, Ihr Team baut darauf auf</td></tr>
+      </tbody>
+    </table>
+    <div class="metrics">
+          <div class="metric"><div class="lbl">Seitengröße</div><div class="val">unter 60 KB</div><div class="old">heute: 161 KB</div></div>
+          <div class="metric"><div class="lbl">Skripte nachgeladen</div><div class="val">1</div><div class="old">heute: 15</div></div>
+          <div class="metric"><div class="lbl">Strukturierte Daten</div><div class="val">vorbereitet</div><div class="old">heute: keine gefunden</div></div>
+          <div class="metric"><div class="lbl">Social-Vorschau</div><div class="val">vorhanden</div><div class="old">heute: nicht vorhanden</div></div>
+    </div>
+    <div class="note-box" style="margin-top:26px">
+      <b>Warum das zählt.</b> Wer heute nach Bildverstehen oder Fahrerbeobachtung sucht, fragt zunehmend einen KI-Assistenten statt eine Suchmaschine. Der liest Text und hinterlegte Daten, keine Bilder und kein JavaScript. Genau darauf ist dieser Entwurf ausgelegt, mit den Fachbegriffen Ihrer Branche im sichtbaren Text.
+    </div>
+  </section>
+
+  <section class="h-sec" id="warum" style="scroll-margin-top:90px">
+    <h2 class="h-sec__head">Warum gerade ich.</h2>
+    <p class="h-sec__lede">Ein Ansprechpartner, fester Preis, kein Abo-Zwang.</p>
+    <div class="why">
+          <div class="why__c"><h4>Fester Preis, keine Überraschungen</h4><p>Sie erfahren vor dem Start, was die Umsetzung kostet. Fest heißt fest.</p></div>
+          <div class="why__c"><h4>Technisches Verständnis</h4><p>Promovierter Ingenieur mit KI-Forschung an der RWTH Aachen. Ich verstehe, was Sie tun, bevor ich es beschreibe.</p></div>
+          <div class="why__c"><h4>Wächst mit Ihnen</h4><p>Unterseiten, News, Publikationen oder eine datensparsame Auswertung lassen sich in Stufen ergänzen, von kostenfrei bis kleine Monatsgebühr.</p></div>
+          <div class="why__c"><h4>Die Seite gehört Ihnen</h4><p>Reines HTML mit vollen Nutzungsrechten. Ihr Team kann jederzeit übernehmen und in jeder Technologie weiterbauen.</p></div>
+    </div>
+  </section>
+
+  <section class="h-sec" id="referenzen" style="scroll-margin-top:90px">
+    <h2 class="h-sec__head">Weitere Arbeiten.</h2>
+    <p class="h-sec__lede">Kein Einzelfall: beauftragte Seiten und Entwürfe aus verschiedenen Branchen.</p>
+    <div class="refs">
+        <div class="ref">
+          <img class="ref__shot" src="media/refs/ref-akyol.jpg" alt="Startseite von akyol.de" width="720" height="484" loading="lazy" decoding="async">
+          <div class="ref__body">
+            <h4>akyol.de</h4>
+            <p>Meine eigene Website: Interim Management, Blog, Vorträge und ein eigenes Auswertungs-Dashboard.</p>
+            <a href="https://akyol.de/" target="_blank" rel="noopener">Live ansehen</a>
+            <div class="ref__extra"><span class="lbl">Interaktive Vorträge</span>
+              <a href="https://akyol.de/presentations/ki-gestern-heute-morgen/" target="_blank" rel="noopener">KI: gestern, heute, morgen</a>
+              <a href="https://akyol.de/presentations/ki-arbeitsarchitektur/" target="_blank" rel="noopener">KI als Arbeitsarchitektur</a>
+            </div>
+          </div>
+        </div>
+        <div class="ref">
+          <img class="ref__shot" src="media/refs/ref-coreform.jpg" alt="Startseite von core:form" width="720" height="484" loading="lazy" decoding="async">
+          <div class="ref__body">
+            <h4>core:form</h4>
+            <p>Pilates-Studio in Essen-Kettwig: mehrseitiger Auftritt mit Kursen, Team und Buchung. Beauftragt und im Betrieb.</p>
+            <a href="https://www.core-form.de/" target="_blank" rel="noopener">Live ansehen</a>
+          </div>
+        </div>
+        <div class="ref">
+          <img class="ref__shot" src="media/refs/ref-barista.jpg" alt="Startseite von Barista-Biker" width="720" height="484" loading="lazy" decoding="async">
+          <div class="ref__body">
+            <h4>Barista-Biker</h4>
+            <p>Mobiles Kaffee-Catering aus Mönchengladbach. Beauftragt, bezahlt, live.</p>
+            <a href="https://barista-biker.de/" target="_blank" rel="noopener">Live ansehen</a>
+          </div>
+        </div>
+        <div class="ref">
+          <img class="ref__shot" src="media/refs/ref-petra.jpg" alt="Startseite von Petra Ladenburger" width="720" height="484" loading="lazy" decoding="async">
+          <div class="ref__body">
+            <h4>Petra Ladenburger</h4>
+            <p>Traumasensitive Arbeit mit Pferden: ruhiges Design, klare Erzählung, ein Weg zum Kennenlernen.</p>
+            <a href="https://suak0903.github.io/petra-pferde/" target="_blank" rel="noopener">Live ansehen</a>
+          </div>
+        </div>
+        <div class="ref">
+          <img class="ref__shot" src="media/refs/ref-seitec.jpg" alt="Startseite von SEITtec" width="720" height="484" loading="lazy" decoding="async">
+          <div class="ref__body">
+            <h4>SEITtec</h4>
+            <p>Handwerksbetrieb aus Essen: vier Gewerke, je eine eigene Leistungsseite.</p>
+            <a href="https://suak0903.github.io/seitec/" target="_blank" rel="noopener">Live ansehen</a>
+          </div>
+        </div>
+    </div>
+
+    <div class="h-end">
+      <b>Was ist das hier?</b> Ein Redesign-Entwurf von Dr.-Ing. Suat Akyol. Inhalte und Bilder stammen aus dem öffentlich verfügbaren Bestand von cancontrols.com. Anmerkungen, Fragen oder der Wunsch, den Entwurf zu entfernen: <a href="mailto:contact@akyol.de">contact@akyol.de</a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<button class="toc-top" id="tocTop" type="button" aria-label="Nach oben">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="media/CCLogo.png" alt="CanControls" style="display:block;height:38px;width:auto;margin-bottom:20px;filter:brightness(0) invert(1)" />
+        <p>The Art of Image Understanding. Außergewöhnliche Lösungen aus Aachen — seit 2005.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Unternehmen</div>
+        <ul>
+          <li><a href="#unternehmen">Über uns</a></li>
+          <li><a href="#stellen">Karriere</a></li>
+          <li><a href="#unternehmen">Standort</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Leistungen</div>
+        <ul>
+          <li><a href="#technologie">Technologie</a></li>
+          <li><a href="#bereiche">Anwendungsbereiche</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <ul>
+          <li><a href="mailto:info@cancontrols.com">info@cancontrols.com</a></li>
+          <li><a href="tel:+4924147582260">+49 241 47582260</a></li>
+          <li>Markt 45 · 52062 Aachen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© <span id="yr">2025</span> CanControls GmbH</div>
+      <div class="footer__legal">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // contact form: open mail client pre-filled (prototype-grade — production should POST to backend)
+  function cfSubmit(e, form){
+    e.preventDefault();
+    const d = new FormData(form);
+    const body = `${d.get('message')}\n\n--\n${d.get('name')}\n${d.get('email')}`;
+    window.location.href = 'mailto:info@cancontrols.com?subject=' + encodeURIComponent(d.get('subject') || 'Anfrage') + '&body=' + encodeURIComponent(body);
+    return false;
+  }
+
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('nav');
+  const heroImg = document.querySelector('.hero__img');
+  const hero = document.querySelector('.hero');
+  const footerEl = document.querySelector('.footer');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll-spy data
+  const navLinks = Array.from(document.querySelectorAll('.nav__links a[href^="#"], .nav__mobile-links a[href^="#"]'));
+  const linkMap = {};
+  navLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    (linkMap[id] = linkMap[id] || []).push(a);
+  });
+  const trackedIds = Object.keys(linkMap).filter(id => document.getElementById(id));
+  function clearActive(){ navLinks.forEach(a => a.classList.remove('is-active')); }
+  function updateActive(){
+    const y = window.scrollY || 0;
+    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 120 : 0;
+    const footerTop = footerEl ? footerEl.offsetTop - 160 : Infinity;
+    if (y < heroBottom || y > footerTop){ clearActive(); return; }
+    const trigger = y + Math.min(220, window.innerHeight * 0.35);
+    let current = null;
+    trackedIds.forEach(id => {
+      const top = document.getElementById(id).offsetTop;
+      if (top <= trigger) current = id;
+    });
+    clearActive();
+    if (current && linkMap[current]) linkMap[current].forEach(a => a.classList.add('is-active'));
+  }
+
+  // nav scroll state + hero parallax
+  let ticking = false;
+  function onScroll(){
+    const y = window.scrollY || 0;
+    const t = window.innerWidth >= 1024 ? 100 : 160;
+    nav.classList.toggle('scrolled', y > t);
+    if (heroImg && !reduceMotion) {
+      heroImg.style.transform = 'translate3d(0,' + (y * 0.5) + 'px,0)';
+    }
+    updateActive();
+  }
+  function requestTick(){
+    if (!ticking){ requestAnimationFrame(() => { onScroll(); ticking = false; }); ticking = true; }
+  }
+  onScroll();
+  window.addEventListener('scroll', requestTick, {passive:true});
+  window.addEventListener('resize', onScroll);
+
+  // hero marquee — rAF auto-scroll with touch/drag override.
+  // Drag follows finger 1:1, then auto-scroll resumes from current position
+  // (no snap-back). Wrapping uses modulo of "half" so duplicates are seamless.
+  const marquee = document.getElementById('marquee');
+  if (marquee) {
+    const track = marquee.querySelector('.hero__marquee-track');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SPEED = 65;        // px / second (faster than before)
+    let pos = 0;             // current translateX, always <= 0
+    let half = 0;            // width of one copy
+    let lastT = 0;
+    let dragging = false;
+    let startX = 0, startPos = 0;
+    let velocity = 0;        // px/sec, set on release for fling
+    let flingT = 0;
+
+    function measure(){
+      // half = width of one copy (the track contains exactly 2 identical copies)
+      half = track.scrollWidth / 2 || 1;
+    }
+    measure();
+    // re-measure after fonts load and on resize — first measurement before
+    // fonts are ready gives wrong width and causes visible overlap
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(measure);
+    }
+    window.addEventListener('load', measure);
+    setTimeout(measure, 400);
+    setTimeout(measure, 1200);
+    window.addEventListener('resize', measure);
+    if (window.ResizeObserver){
+      const ro = new ResizeObserver(measure);
+      ro.observe(track);
+    }
+
+    function wrap(p){
+      // keep p in (-half, 0]
+      if (half <= 0) return p;
+      p = p % half;
+      if (p > 0) p -= half;
+      return p;
+    }
+
+    function frame(t){
+      if (!lastT) lastT = t;
+      const dt = Math.min(0.05, (t - lastT) / 1000);
+      lastT = t;
+      if (!dragging) {
+        let speed = SPEED;
+        // fling: blend velocity to SPEED over ~600ms after release
+        if (flingT > 0) {
+          const k = Math.min(1, (t - flingT) / 600);
+          speed = velocity * (1 - k) + (-SPEED) * k;
+          // velocity is signed px/sec; SPEED scrolls left = negative direction
+          pos += speed * dt;
+          if (k >= 1) { flingT = 0; velocity = -SPEED; }
+        } else {
+          pos -= SPEED * dt;
+        }
+        pos = wrap(pos);
+        track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    if (!reduce) requestAnimationFrame(frame);
+
+    let lastMoveX = 0, lastMoveT = 0;
+    function down(e){
+      dragging = true;
+      marquee.classList.add('dragging');
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      startX = x; startPos = pos;
+      lastMoveX = x; lastMoveT = performance.now();
+      velocity = 0; flingT = 0;
+    }
+    function move(e){
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      const now = performance.now();
+      const dt = (now - lastMoveT) / 1000;
+      if (dt > 0) velocity = (x - lastMoveX) / dt;   // signed px/sec
+      lastMoveX = x; lastMoveT = now;
+
+      pos = wrap(startPos + (x - startX));
+      track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      if (e.cancelable && Math.abs(x - startX) > 4) e.preventDefault();
+    }
+    function up(){
+      if (!dragging) return;
+      dragging = false;
+      marquee.classList.remove('dragging');
+      // clamp fling velocity
+      const max = 1400, min = -1400;
+      if (velocity > max) velocity = max;
+      if (velocity < min) velocity = min;
+      flingT = performance.now();
+      lastT = 0;
+    }
+    marquee.addEventListener('touchstart', down, {passive:true});
+    marquee.addEventListener('touchmove',  move, {passive:false});
+    marquee.addEventListener('touchend',   up);
+    marquee.addEventListener('touchcancel',up);
+    marquee.addEventListener('mousedown',  down);
+    window.addEventListener('mousemove',   move);
+    window.addEventListener('mouseup',     up);
+    window.addEventListener('blur',        up);
+  }
+  const burger = document.getElementById('burger');
+  const mobile = document.getElementById('mobile-menu');
+  function setMobile(open){
+    burger.classList.toggle('open', open);
+    mobile.classList.toggle('open', open);
+    nav.classList.toggle('mobile-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setMobile(!mobile.classList.contains('open')));
+  mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMobile(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobile.classList.contains('open')) setMobile(false); });
+  document.addEventListener('click', e => {
+    if (mobile.classList.contains('open') && !mobile.contains(e.target) && !burger.contains(e.target)) setMobile(false);
+  });
+
+  // language flag toggles (visual-only)
+  document.querySelectorAll('.nav__flag,.nav__mobile-flag').forEach(b => {
+    b.addEventListener('click', () => {
+      const peers = b.classList.contains('nav__mobile-flag')
+        ? document.querySelectorAll('.nav__mobile-flag')
+        : document.querySelectorAll('.nav__flag');
+      peers.forEach(p => { p.classList.remove('is-active'); p.setAttribute('aria-pressed','false'); });
+      b.classList.add('is-active'); b.setAttribute('aria-pressed','true');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('tocTop');
+  if(!btn)return;
+  addEventListener('scroll',function(){btn.classList.toggle('show',scrollY>640)},{passive:true});
+  btn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
