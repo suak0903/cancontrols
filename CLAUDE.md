@@ -80,9 +80,18 @@ Fonts: **DM Sans** (body, variable wght), **Bricolage Grotesque** (display, vari
   - Width: `clamp(300px, 45%, 440px)` — never full-width, even on phones. Slides in from right.
   - Height: `100vh; 100lvh;` (cascade) — `lvh` is stable AND fills the full screen when the URL bar collapses. `svh` and `bottom:0` were tried and rejected (gap / twitch respectively).
   - `overflow:hidden` so a scrollbar can never appear, no matter what.
-  - Internal `.nav__mobile-art` has a fixed `height:240px` (was `flex:1` originally — that pushed icons off-screen on phones with URL bar showing).
+  - Internal `.nav__mobile-art` has a fixed `height:200px` (was `flex:1` originally — that pushed icons off-screen on phones with URL bar showing).
+  - Mobile menu stack order: nav links → icons (mail/phone/flags) → art block. Icons sit ABOVE the art, not below.
+  - No `border-top` on `.nav__mobile-meta` — the last link's own `border-bottom` is the separator. Avoids visible "double line".
   - Closes on: Escape key, link click, OR click outside menu (excluding burger button itself).
 - **Marquee** under hero: rAF auto-scroll at 65 px/s, touch+mouse drag with 600 ms fling-release.
+- **Hero intro animation** (~2.8 s on page load):
+  - Petrol scan line sweeps top → bottom across the hero (laser-style, two-layer glow).
+  - Hero image "resolves" from desaturated/dark to normal saturation (computer-vision processing optic).
+  - CSS grid texture pulses briefly to 55 % opacity then settles to 30 %.
+  - Face-detection viewfinder (4 corner brackets, petrol) appears centered on the face, holds, fades.
+  - Content (eyebrow → H1 → lead → keywords → buttons) staggers in from below at 200 ms intervals starting at 1.05 s.
+  - Fully disabled under `prefers-reduced-motion: reduce` — scan/viewfinder hidden, content set to `opacity:1`.
 - **Forms**: contact form `cfSubmit()` is prototype-grade — opens user's `mailto:` client with prefilled subject + body. **Production must POST to a real endpoint.**
 
 ## Things tried & rolled back (don't reintroduce)
@@ -96,6 +105,7 @@ Fonts: **DM Sans** (body, variable wght), **Bricolage Grotesque** (display, vari
 | Mobile menu `bottom:0` | Caused twitch during scroll when URL bar changed; use explicit height |
 | Mobile menu mail/phone icons removed | User restored them ("das meinte ich nicht"); leave them |
 | `.info-card` in `.contact__inner` | User: footer already has all addresses |
+| Mobile menu icon row BELOW the art | User wanted icons ABOVE the art — current order: links → icons → art |
 
 ## Unused media (kept for future use)
 

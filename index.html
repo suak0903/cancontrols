@@ -34,6 +34,23 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* ---------- Demo-Leiste (Entwurfs-Hinweis, Muster petra-pferde; 18.07.2026) ---------- */
+.demobar{
+  position:fixed;bottom:0;left:0;right:0;z-index:1200;
+  background:rgba(15,22,32,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:12px 46px 12px 18px;font-size:13.5px;line-height:1.5;text-align:center;
+  border-top:3px solid #095873;transform:translateY(100%);
+  animation:demoin .5s .9s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes demoin{to{transform:none}}
+.demobar a{color:#fff;text-decoration:underline;text-underline-offset:2px;font-weight:700}
+.demobar__sep{opacity:.5}
+.demobar button{position:absolute;right:12px;background:none;border:0;color:rgba(255,255,255,.55);font-size:22px;line-height:1;cursor:pointer}
+.demobar button:hover{color:#fff}
+.demobar.hide{display:none}
+@media (prefers-reduced-motion: reduce){.demobar{animation:none;transform:none}}
 </style>
 <style>
 /* ============================================================
@@ -2099,6 +2116,18 @@ p{color:var(--ink-soft);max-width:64ch}
       b.classList.add('is-active'); b.setAttribute('aria-pressed','true');
     });
   });
+</script>
+<div class="demobar" id="demobar">
+  <span>Redesign-Entwurf, kein offizieller Auftritt von <b>CanControls GmbH</b>. <a href="https://suak0903.github.io/akyol-neu/hinweise-cancontrols.html" target="_blank" rel="noopener">Was wurde gebaut?</a> <span class="demobar__sep">&middot;</span> <a href="https://www.cancontrols.com/" target="_blank" rel="noopener">Originalseite</a></span>
+  <button id="demoClose" aria-label="Hinweis schließen">&times;</button>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('demobar'),btn=document.getElementById('demoClose');
+  if(!bar||!btn)return;
+  if(sessionStorage.getItem('demobar-hidden')==='1'){bar.classList.add('hide');return}
+  btn.addEventListener('click',function(){bar.classList.add('hide');sessionStorage.setItem('demobar-hidden','1')});
+})();
 </script>
 </body>
 </html>
