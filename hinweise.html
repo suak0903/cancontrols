@@ -8,7 +8,7 @@
 <link rel="icon" type="image/jpeg" href="media/CC-Logo-klein.jpg" />
 
 
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=9">
 
 <style>
 /* ============================================================
@@ -143,6 +143,18 @@
   .refs{grid-template-columns:1fr}
   .cmp{font-size:13.5px}
   .cmp td:first-child{width:34%}
+}
+
+/* Vergleichstabelle mobil als Karten - verhindert horizontalen Ueberlauf,
+   der sonst den fixierten Header seitlich wegrutschen laesst (Suat 18.07.) */
+@media(max-width:680px){
+  .cmp,.cmp tbody,.cmp tr,.cmp td{display:block;width:100%}
+  .cmp thead{display:none}
+  .cmp tr{border:1px solid rgba(15,22,32,.12);background:#fff;padding:14px 16px;margin-bottom:14px}
+  .cmp td{border:0;padding:5px 0}
+  .cmp td:first-child{width:auto;font-size:15.5px;padding-bottom:8px}
+  .cmp td:not(:first-child)::before{content:attr(data-l);display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6B7480;margin-bottom:3px}
+  .metrics{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -316,12 +328,12 @@
     <table class="cmp">
       <thead><tr><th>Merkmal</th><th>Bisherige Seite</th><th>Dieser Entwurf</th></tr></thead>
       <tbody>
-            <tr><td>Erzählung</td><td class="alt">Inhalte über ein gewachsenes Baukasten-System verteilt</td><td class="neu">Eine <b>durchgehende Geschichte</b> vom Können zur Anwendung</td></tr>
-            <tr><td>Auffindbar bei Google</td><td class="alt">Keine Seitenbeschreibung, kein Social-Vorschaubild</td><td class="neu">Vollständige <b>Beschreibung</b> plus Vorschaubild</td></tr>
-            <tr><td>Auffindbar für KI-Suche</td><td class="alt">Keine strukturierten Daten hinterlegt</td><td class="neu"><b>Strukturierte Daten</b> zu Unternehmen und Fachgebieten vorbereitet</td></tr>
-            <tr><td>Technischer Unterbau</td><td class="alt">WordPress mit 15 nachgeladenen Skripten, 161 KB Startseite</td><td class="neu"><b>Reines HTML</b>, ein Stylesheet, unter 60 KB</td></tr>
-            <tr><td>Datenschutz</td><td class="alt">Externe Skripte und Baukasten-Bausteine</td><td class="neu">Alles vom eigenen Server, <b>keine Cookies</b></td></tr>
-            <tr><td>Weiterverwendung</td><td class="alt">An das Baukasten-System gebunden</td><td class="neu"><b>Vorlage für jedes moderne Framework</b>, Ihr Team baut darauf auf</td></tr>
+            <tr><td>Erzählung</td><td class="alt" data-l="Bisherige Seite">Inhalte über ein gewachsenes Baukasten-System verteilt</td><td class="neu" data-l="Dieser Entwurf">Eine <b>durchgehende Geschichte</b> vom Können zur Anwendung</td></tr>
+            <tr><td>Auffindbar bei Google</td><td class="alt" data-l="Bisherige Seite">Keine Seitenbeschreibung, kein Social-Vorschaubild</td><td class="neu" data-l="Dieser Entwurf">Vollständige <b>Beschreibung</b> plus Vorschaubild</td></tr>
+            <tr><td>Auffindbar für KI-Suche</td><td class="alt" data-l="Bisherige Seite">Keine strukturierten Daten hinterlegt</td><td class="neu" data-l="Dieser Entwurf"><b>Strukturierte Daten</b> zu Unternehmen und Fachgebieten vorbereitet</td></tr>
+            <tr><td>Technischer Unterbau</td><td class="alt" data-l="Bisherige Seite">WordPress mit 15 nachgeladenen Skripten, 161 KB Startseite</td><td class="neu" data-l="Dieser Entwurf"><b>Reines HTML</b>, ein Stylesheet, unter 60 KB</td></tr>
+            <tr><td>Datenschutz</td><td class="alt" data-l="Bisherige Seite">Externe Skripte und Baukasten-Bausteine</td><td class="neu" data-l="Dieser Entwurf">Alles vom eigenen Server, <b>keine Cookies</b></td></tr>
+            <tr><td>Weiterverwendung</td><td class="alt" data-l="Bisherige Seite">An das Baukasten-System gebunden</td><td class="neu" data-l="Dieser Entwurf"><b>Vorlage für jedes moderne Framework</b>, Ihr Team baut darauf auf</td></tr>
       </tbody>
     </table>
     <div class="metrics">

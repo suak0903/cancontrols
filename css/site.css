@@ -1062,3 +1062,6 @@ p{color:var(--ink-soft);max-width:64ch}
   .hero__content .container > *{opacity:1}
 }
 
+
+/* Ueberlauf-Schutz (18.07.) */
+html{overflow-x:clip}
