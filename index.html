@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CanControls — The Art of Image Understanding</title>
+<link rel="icon" type="image/jpeg" href="media/CC-Logo-klein.jpg" />
+
+
+<link rel="stylesheet" href="css/site.css?v=9">
+</head>
+<body data-screen-label="CanControls Home">
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="CanControls Startseite">
+      <img src="media/CCLogo.png" alt="CanControls" />
+    </a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="#technologie">Technologie</a>
+      <a href="#bereiche">Bereiche</a>
+      <a href="#unternehmen">Unternehmen</a>
+      <span class="nav__lang">
+        <button type="button" class="nav__flag is-active" aria-pressed="true" aria-label="Deutsch">
+          <svg viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="#000"/><rect y="5.33" width="22" height="5.34" fill="#DD0000"/><rect y="10.67" width="22" height="5.33" fill="#FFCE00"/></svg>
+        </button>
+        <button type="button" class="nav__flag" aria-pressed="false" aria-label="English">
+          <svg viewBox="0 0 22 16" aria-hidden="true"><defs><clipPath id="gb-d"><rect width="22" height="16"/></clipPath></defs><g clip-path="url(#gb-d)"><rect width="22" height="16" fill="#012169"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#C8102E" stroke-width="1.6"/><path d="M11 0 V16 M0 8 H22" stroke="#fff" stroke-width="4"/><path d="M11 0 V16 M0 8 H22" stroke="#C8102E" stroke-width="2.4"/></g></svg>
+        </button>
+      </span>
+      <a class="btn btn--accent nav__cta-btn" href="#kontakt">Kontakt <span class="btn__arrow" aria-hidden="true"></span></a>
+    </nav>
+    <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<aside class="nav__mobile" id="mobile-menu" aria-hidden="true">
+  <div class="nav__mobile-body">
+    <nav class="nav__mobile-links" aria-label="Mobile Navigation">
+      <a href="#technologie"><span class="nav__mobile-no">01</span><span class="nav__mobile-lbl">Technologie</span></a>
+      <a href="#bereiche"><span class="nav__mobile-no">02</span><span class="nav__mobile-lbl">Bereiche</span></a>
+      <a href="#unternehmen"><span class="nav__mobile-no">03</span><span class="nav__mobile-lbl">Unternehmen</span></a>
+      <a href="#kontakt"><span class="nav__mobile-no">04</span><span class="nav__mobile-lbl">Kontakt</span></a>
+    </nav>
+    <div class="nav__mobile-meta">
+      <a href="mailto:info@cancontrols.com" class="nav__mobile-icon" aria-label="E-Mail an info@cancontrols.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14"/>
+          <polyline points="3 5 12 13 21 5"/>
+        </svg>
+      </a>
+      <a href="tel:+4924147582260" class="nav__mobile-icon" aria-label="Anruf +49 241 47582260">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+          <path d="M5 3h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C9 21 3 15 3 5c0-1 1-2 2-2z"/>
+        </svg>
+      </a>
+      <button type="button" class="nav__mobile-flag is-active" aria-pressed="true" aria-label="Deutsch">
+        <svg viewBox="0 0 22 16" aria-hidden="true"><rect width="22" height="16" fill="#000"/><rect y="5.33" width="22" height="5.34" fill="#DD0000"/><rect y="10.67" width="22" height="5.33" fill="#FFCE00"/></svg>
+      </button>
+      <button type="button" class="nav__mobile-flag" aria-pressed="false" aria-label="English">
+        <svg viewBox="0 0 22 16" aria-hidden="true"><defs><clipPath id="gb-m"><rect width="22" height="16"/></clipPath></defs><g clip-path="url(#gb-m)"><rect width="22" height="16" fill="#012169"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0 L22 16 M22 0 L0 16" stroke="#C8102E" stroke-width="1.6"/><path d="M11 0 V16 M0 8 H22" stroke="#fff" stroke-width="4"/><path d="M11 0 V16 M0 8 H22" stroke="#C8102E" stroke-width="2.4"/></g></svg>
+      </button>
+    </div>
+    <div class="nav__mobile-art" aria-hidden="true">
+      <img src="media/Gesichtsanalyse.jpg" alt="" />
+      <div class="nav__mobile-art__overlay"></div>
+      <div class="nav__mobile-art__caption">
+        <span class="nav__mobile-art__label">Aachen · seit 2005</span>
+        <span class="nav__mobile-art__tagline">The Art of<br/><em>Image Understanding.</em></span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img class="hero__img" src="media/Gesichtsanalyse.jpg" alt="" fetchpriority="high" />
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__corner" aria-hidden="true">CanControls · Aachen · est. 2005</div>
+  <div class="hero__scan" aria-hidden="true"></div>
+  <div class="hero__viewfinder" aria-hidden="true">
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--tl"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--tr"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--bl"></span>
+    <span class="hero__viewfinder-corner hero__viewfinder-corner--br"></span>
+  </div>
+
+  <div class="hero__content">
+    <div class="container">
+      <div class="hero__eyebrow">Image Understanding · Aachen, Germany</div>
+      <h1 class="hero__headline">
+        The Art<br/>of <em>Image<br/>Understanding.</em>
+      </h1>
+      <p class="hero__lead">
+        Ihre Vision ist unsere Mission. Wir entwickeln Systeme, die ihr Umfeld nicht nur wahrnehmen, sondern <em>wirklich verstehen</em> — von Gesichts- und Gestenanalyse bis zur Personen- und Oberflächenerkennung.
+      </p>
+      <div class="hero__sub">
+        <span>Gesichtsanalyse</span><span class="hero__sub-dot" aria-hidden="true"></span>
+        <span>Gestenanalyse</span><span class="hero__sub-dot" aria-hidden="true"></span>
+        <span>Personenanalyse</span><span class="hero__sub-dot" aria-hidden="true"></span>
+        <span>Oberflächenanalyse</span>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--accent" href="#technologie">Technologie entdecken <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a class="btn btn--ghost" href="#kontakt">Projekt besprechen</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__marquee" id="marquee">
+    <div class="hero__marquee-track">
+      <div class="hero__marquee-copy">
+        <span class="hero__marquee-item"><span>State-of-the-Art Bildverarbeitung</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>20 ms pro Frame</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Mustererkennung</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Machine Learning</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Touchless Interaction</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Biometrie</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Industrielle Echtzeit</span><span class="hero__marquee-dot"></span></span>
+      </div>
+      <div class="hero__marquee-copy" aria-hidden="true">
+        <span class="hero__marquee-item"><span>State-of-the-Art Bildverarbeitung</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>20 ms pro Frame</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Mustererkennung</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Machine Learning</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Touchless Interaction</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Biometrie</span><span class="hero__marquee-dot"></span></span>
+        <span class="hero__marquee-item"><span>Industrielle Echtzeit</span><span class="hero__marquee-dot"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO STRIP ============ -->
+<section class="intro-strip" aria-label="Kennzahlen">
+  <div class="container">
+    <div class="intro-strip__inner">
+      <div class="intro-strip__item">
+        <span class="intro-strip__label">Reaktion / Frame</span>
+        <span class="intro-strip__val">20 <em>ms</em></span>
+      </div>
+      <div class="intro-strip__item">
+        <span class="intro-strip__label">Bereiche</span>
+        <span class="intro-strip__val"><em>7</em> Anwendungen</span>
+      </div>
+      <div class="intro-strip__item">
+        <span class="intro-strip__label">Seit</span>
+        <span class="intro-strip__val">2005 in <em>Aachen</em></span>
+      </div>
+      <div class="intro-strip__item">
+        <span class="intro-strip__label">Fokus</span>
+        <span class="intro-strip__val">Image <em>Understanding</em></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" id="mission">
+  <div class="container">
+    <div class="manifesto__inner">
+      <div>
+        <span class="label">001 — Mission</span>
+        <h2 class="manifesto__quote">
+          Außergewöhnliche <em>Lösungen.</em><br/>Für außergewöhnliche <em>Probleme.</em>
+        </h2>
+      </div>
+      <div>
+        <p class="manifesto__body">
+          CanControls entwickelt und implementiert hochkomplexe, intelligente Bildverarbeitungssysteme. State-of-the-Art Verfahren aus Mustererkennung und Bildverarbeitung machen Maschinen sehfähig — und vor allem: verständnisfähig.
+        </p>
+        <p class="manifesto__body">
+          Sprechen Sie uns an, wenn Sie nach außergewöhnlichen Lösungen für außergewöhnliche Probleme suchen.
+        </p>
+        <div class="manifesto__stats">
+          <div class="manifesto__stat"><div class="n">20<em>ms</em></div><div class="l">Pro Frame</div></div>
+          <div class="manifesto__stat"><div class="n"><em>5</em></div><div class="l">Technologien</div></div>
+          <div class="manifesto__stat"><div class="n">est.<em>&thinsp;'05</em></div><div class="l">In Aachen</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECHNOLOGIE ============ -->
+<section class="tech" id="technologie">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="label">002 — Technologie</span>
+        <h2>Was Sie in fünf Jahren<br/>auf dem Markt <em>erwarten dürfen.</em></h2>
+      </div>
+      <div class="sec-head__meta">
+        <b>State-of-the-Art Bildverarbeitung</b>
+        Mustererkennung, neuronale Verfahren und Echtzeit-Pipelines — entwickelt und implementiert in Aachen.
+      </div>
+    </div>
+
+    <div class="tech-grid">
+      <article class="kurs-card kurs-card--feature">
+        <div class="kurs-card__media m-face">
+          <span class="kurs-card__tag"><i></i>Königsdisziplin</span>
+          <span class="kurs-card__no">01 / 05</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Gesichts<em>analyse</em></h3>
+          <p>Was der Mensch von Geburt an vermag, ist unsere Königsdisziplin: das Lesen des menschlichen Gesichtes. Um den Nutzer besser zu verstehen, nehmen wir uns dafür viel Zeit — etwa <em>20&nbsp;Millisekunden</em>.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-gesture">
+          <span class="kurs-card__tag"><i></i>Touchless</span>
+          <span class="kurs-card__no">02 / 05</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Gesten<em>analyse</em></h3>
+          <p>Gesten zählen zu den natürlichsten Kommunikationsarten des Menschen — berührungslose Bedienung auf höchstem Niveau.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-person">
+          <span class="kurs-card__tag"><i></i>Biometrie</span>
+          <span class="kurs-card__no">03 / 05</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Personen<em>analyse</em></h3>
+          <p>Der Fingerabdruck zählt zu den ältesten biometrischen Verfahren. Wir bieten unkomplizierte Personenerkennung durch berührungslose Messung.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-surface">
+          <span class="kurs-card__tag"><i></i>Inspektion</span>
+          <span class="kurs-card__no">04 / 05</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Oberflächen<em>analyse</em></h3>
+          <p>Mikroskopische Defekte, Texturen, Strukturen — präzise Erkennung von Oberflächeneigenschaften in industrieller Echtzeit.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card kurs-card--skills">
+        <div class="kurs-card__media">
+          <span class="kurs-card__tag" style="background:rgba(var(--accent-rgb),.18);border-color:rgba(var(--accent-rgb),.4)"><i></i>Core Stack</span>
+          <span class="kurs-card__no">05 / 05</span>
+          <div class="kurs-card__badge"><span>∞</span></div>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Generelle <em>Kompetenzen</em></h3>
+          <p>Machine Learning, klassische Computer Vision, eingebettete Pipelines und maßgeschneiderte Algorithmen — universell anpassbar an Ihre Domäne.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE BANNER ============ -->
+<section class="feature-banner" aria-label="Statement">
+  <div class="container">
+    <div class="feature-banner__content">
+      <p class="feature-banner__quote">
+        Wir lassen Maschinen <em>sehen.</em><br/>Und vor allem: <em>verstehen.</em>
+      </p>
+      <span class="feature-banner__attr">— CanControls, Aachen seit 2005</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEREICHE ============ -->
+<section class="areas" id="bereiche">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="label">003 — Bereiche</span>
+        <h2>Einsatzgebiete für<br/>unsere <em>Technologie.</em></h2>
+      </div>
+      <div class="sec-head__meta">
+        <b>Universell anpassbar</b>
+        Unsere Algorithmen erschließen innerhalb kurzer Zeit zahlreiche Anwendungsgebiete — lassen Sie sich von unserer Universalität überzeugen.
+      </div>
+    </div>
+
+    <div class="bereich-grid">
+      <article class="kurs-card kurs-card--feature">
+        <div class="kurs-card__media m-auto">
+          <span class="kurs-card__tag"><i></i>Flagship</span>
+          <span class="kurs-card__no">01 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Automobil<em>bau</em></h3>
+          <p>Kraftfahrzeuge besitzen eine Vielzahl von Sensoren, die den internen und externen Zustand des Fahrzeuges überwachen. Für die wichtigste Komponente des Gesamtsystems Auto — den <em>Fahrer</em> — gab es bisher überraschenderweise keine vergleichbare Aufmerksamkeit.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-luft">
+          <span class="kurs-card__tag"><i></i>Echtzeit</span>
+          <span class="kurs-card__no">02 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Luft- und <em>Raumfahrt</em></h3>
+          <p>In Cockpits und Bodenstationen entstehen täglich Millionen visueller Datenpunkte. Wir extrahieren daraus zuverlässige Aussagen — über Pilotzustand, Materialdefekte und sicherheitskritische Situationen.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-medizin">
+          <span class="kurs-card__tag"><i></i>Mustererkennung</span>
+          <span class="kurs-card__no">03 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Medizin<em>technik</em></h3>
+          <p>In Diagnostik, Therapie und Pflege entstehen Bilder, deren Interpretation Fachärzten vorbehalten ist. Unsere Verfahren unterstützen dort, wo Mustererkennung präziser und schneller arbeitet.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-strasse">
+          <span class="kurs-card__tag"><i></i>Verkehr</span>
+          <span class="kurs-card__no">04 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Straßen<em>wesen</em></h3>
+          <p>Die Straße wird zur Schnittstelle zwischen Mensch und Maschine. Wir analysieren Verkehrsflüsse, Fahrbahnzustände und Schilderwerte — in Echtzeit, unter realen Bedingungen.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-unter">
+          <span class="kurs-card__tag"><i></i>Immersion</span>
+          <span class="kurs-card__no">05 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Unter<em>haltung</em></h3>
+          <p>Immersive Erlebnisse leben von der natürlichen Interaktion. Gesten, Blicke und Mimik werden zur Steuerung — ohne Controller, ohne Knopfdruck.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-expo">
+          <span class="kurs-card__tag"><i></i>Interaktion</span>
+          <span class="kurs-card__no">06 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Exp<em>onate</em></h3>
+          <p>Museen und Ausstellungen werden interaktiv, wenn Inhalte auf ihre Besucher reagieren. Wir liefern die Bildanalyse, die aus klassischen Exponaten dialogfähige Erlebnisse macht.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+
+      <article class="kurs-card">
+        <div class="kurs-card__media m-sicher">
+          <span class="kurs-card__tag"><i></i>Sensorik</span>
+          <span class="kurs-card__no">07 / 07</span>
+        </div>
+        <div class="kurs-card__body">
+          <h3>Sicher<em>heit</em></h3>
+          <p>Von Zutrittskontrolle bis Anomalieerkennung im öffentlichen Raum: zuverlässige, datensparsame Entscheidungen — ohne dauerhafte Personenerfassung.</p>
+          <span class="kurs-card__more">Mehr erfahren</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section class="approach" aria-label="Ansatz">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="label">004 — Ansatz</span>
+        <h2>Vier Schritte zur<br/><em>fertigen Lösung.</em></h2>
+      </div>
+      <div class="sec-head__meta">
+        <b>Von der Vision zur Auslieferung</b>
+        Wir arbeiten partnerschaftlich, transparent und mit klarem Fokus auf den industriellen Einsatz.
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step__ix">STEP 01</span><h4>Vision <em>verstehen</em></h4><p>Wir hören zu — Ihr Problem, Ihre Domäne, Ihre Randbedingungen.</p></div>
+      <div class="step"><span class="step__ix">STEP 02</span><h4>Konzept &amp; <em>Prototyp</em></h4><p>Schnelle Machbarkeitsstudie auf realen Daten mit klaren Metriken.</p></div>
+      <div class="step"><span class="step__ix">STEP 03</span><h4>Entwicklung</h4><p>Maßgeschneiderte Algorithmen, robust für den industriellen Einsatz.</p></div>
+      <div class="step"><span class="step__ix">STEP 04</span><h4>Integration</h4><p>Eingebettet in Ihre Hardware, Pipeline und Produktionsumgebung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section class="company" id="unternehmen">
+  <div class="container">
+    <div class="company__inner">
+      <div>
+        <span class="label">005 — Unternehmen</span>
+        <h2>Innovation aus<br/><em>Aachen.</em></h2>
+        <p style="margin-top:28px">
+          Innovation wurde schon vor über hundert Jahren in Aachen großgeschrieben. Bei der <em>Gründung der RWTH Aachen 1870</em> wurde hier der erste Lehrstuhl für Elektrotechnik eingerichtet.
+        </p>
+        <p>
+          <em>Seit 2005</em> finden Sie auch CanControls in der Kaiserstadt — gegründet von <em>Dr. Ulrich Canzler</em>, eng verbunden mit der RWTH und spezialisiert auf Mensch-Maschine-Schnittstellen, Echtzeit-Bildverarbeitung und videobasierte Szenenanalyse.
+        </p>
+        <div class="company__pillars">
+          <div class="pillar"><div class="k">Standort</div><div class="v">Markt 45 · <em>Aachen</em></div></div>
+          <div class="pillar"><div class="k">Gründung</div><div class="v"><em>2005</em></div></div>
+          <div class="pillar"><div class="k">Fokus</div><div class="v">Image <em>Understanding</em></div></div>
+          <div class="pillar"><div class="k">Karriere</div><div class="v">We are <em>hiring</em></div></div>
+        </div>
+      </div>
+
+      <div class="map-card" aria-hidden="true">
+        <svg class="map-card__svg" viewBox="0 0 480 600" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="mapglow" cx="50%" cy="42%" r="55%">
+              <stop offset="0%" stop-color="rgba(91,176,207,.16)"/>
+              <stop offset="65%" stop-color="rgba(91,176,207,.02)"/>
+              <stop offset="100%" stop-color="rgba(91,176,207,0)"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="480" height="600" fill="url(#mapglow)"/>
+
+          <!-- River meander (Pau bach in south) -->
+          <path d="M0,512 Q 70,492 140,510 T 290,490 T 420,508 L 480,500"
+                fill="none" stroke="rgba(91,176,207,.22)" stroke-width="3.2" stroke-linecap="round"/>
+
+          <!-- BUILDING BLOCKS (small filled rectangles between streets) -->
+          <g fill="rgba(255,255,255,.06)">
+            <!-- top band -->
+            <rect x="22" y="30" width="36" height="20"/>
+            <rect x="62" y="30" width="46" height="20"/>
+            <rect x="112" y="30" width="38" height="22"/>
+            <rect x="154" y="32" width="42" height="22"/>
+            <rect x="200" y="32" width="46" height="22"/>
+            <rect x="250" y="32" width="42" height="22"/>
+            <rect x="296" y="30" width="48" height="22"/>
+            <rect x="348" y="30" width="42" height="22"/>
+            <rect x="394" y="32" width="38" height="22"/>
+            <rect x="436" y="30" width="42" height="22"/>
+            <rect x="22" y="56" width="42" height="28"/>
+            <rect x="68" y="56" width="38" height="28"/>
+            <rect x="110" y="58" width="44" height="26"/>
+            <rect x="158" y="58" width="38" height="28"/>
+            <rect x="200" y="58" width="42" height="28"/>
+            <rect x="246" y="58" width="46" height="26"/>
+            <rect x="296" y="58" width="40" height="28"/>
+            <rect x="340" y="58" width="44" height="28"/>
+            <rect x="388" y="58" width="40" height="26"/>
+            <rect x="432" y="58" width="46" height="28"/>
+
+            <rect x="22" y="92" width="38" height="30"/>
+            <rect x="64" y="90" width="46" height="32"/>
+            <rect x="114" y="94" width="40" height="28"/>
+            <rect x="158" y="92" width="42" height="30"/>
+            <rect x="204" y="94" width="40" height="28"/>
+            <rect x="248" y="92" width="44" height="30"/>
+            <rect x="296" y="92" width="46" height="30"/>
+            <rect x="346" y="94" width="38" height="28"/>
+            <rect x="388" y="92" width="44" height="30"/>
+            <rect x="436" y="94" width="42" height="28"/>
+
+            <rect x="22" y="130" width="42" height="30"/>
+            <rect x="68" y="130" width="38" height="32"/>
+            <rect x="110" y="130" width="42" height="28"/>
+            <rect x="330" y="130" width="40" height="30"/>
+            <rect x="374" y="132" width="44" height="30"/>
+            <rect x="422" y="130" width="44" height="32"/>
+
+            <rect x="24" y="168" width="40" height="32"/>
+            <rect x="68" y="168" width="44" height="34"/>
+            <rect x="116" y="170" width="40" height="32"/>
+            <rect x="332" y="170" width="42" height="32"/>
+            <rect x="378" y="170" width="40" height="32"/>
+            <rect x="422" y="168" width="46" height="34"/>
+
+            <rect x="22" y="208" width="44" height="32"/>
+            <rect x="70" y="206" width="40" height="34"/>
+            <rect x="114" y="210" width="38" height="30"/>
+            <rect x="334" y="210" width="40" height="30"/>
+            <rect x="378" y="208" width="42" height="32"/>
+            <rect x="424" y="210" width="42" height="30"/>
+
+            <rect x="22" y="248" width="40" height="34"/>
+            <rect x="66" y="246" width="42" height="36"/>
+            <rect x="332" y="248" width="44" height="34"/>
+            <rect x="380" y="246" width="38" height="36"/>
+            <rect x="422" y="248" width="44" height="34"/>
+
+            <rect x="22" y="288" width="38" height="32"/>
+            <rect x="64" y="288" width="44" height="32"/>
+            <rect x="332" y="288" width="40" height="32"/>
+            <rect x="378" y="290" width="42" height="30"/>
+            <rect x="424" y="288" width="42" height="32"/>
+
+            <rect x="22" y="326" width="42" height="30"/>
+            <rect x="68" y="326" width="40" height="30"/>
+            <rect x="114" y="326" width="44" height="32"/>
+            <rect x="162" y="326" width="40" height="30"/>
+            <rect x="206" y="328" width="46" height="30"/>
+            <rect x="256" y="326" width="40" height="30"/>
+            <rect x="300" y="326" width="42" height="32"/>
+            <rect x="346" y="326" width="44" height="30"/>
+            <rect x="394" y="326" width="38" height="30"/>
+            <rect x="436" y="328" width="42" height="30"/>
+
+            <rect x="22" y="362" width="40" height="32"/>
+            <rect x="66" y="362" width="44" height="32"/>
+            <rect x="114" y="362" width="40" height="32"/>
+            <rect x="158" y="362" width="44" height="32"/>
+            <rect x="206" y="362" width="40" height="30"/>
+            <rect x="250" y="362" width="44" height="32"/>
+            <rect x="298" y="362" width="42" height="30"/>
+            <rect x="344" y="362" width="40" height="32"/>
+            <rect x="388" y="362" width="44" height="30"/>
+            <rect x="436" y="362" width="40" height="32"/>
+
+            <rect x="22" y="400" width="42" height="30"/>
+            <rect x="68" y="400" width="40" height="32"/>
+            <rect x="112" y="400" width="44" height="30"/>
+            <rect x="160" y="402" width="40" height="30"/>
+            <rect x="204" y="400" width="44" height="32"/>
+            <rect x="252" y="400" width="40" height="30"/>
+            <rect x="296" y="402" width="44" height="30"/>
+            <rect x="344" y="400" width="42" height="32"/>
+            <rect x="390" y="402" width="40" height="30"/>
+            <rect x="434" y="400" width="44" height="32"/>
+
+            <rect x="22" y="438" width="40" height="32"/>
+            <rect x="66" y="438" width="42" height="30"/>
+            <rect x="112" y="438" width="42" height="32"/>
+            <rect x="158" y="438" width="44" height="30"/>
+            <rect x="206" y="438" width="40" height="32"/>
+            <rect x="250" y="440" width="44" height="30"/>
+            <rect x="298" y="438" width="40" height="32"/>
+            <rect x="342" y="438" width="44" height="30"/>
+            <rect x="390" y="440" width="42" height="30"/>
+            <rect x="436" y="438" width="42" height="32"/>
+          </g>
+
+          <!-- OLD-TOWN BLOCKS (irregular, inside inner ring) -->
+          <g fill="rgba(255,255,255,.10)">
+            <path d="M180,200 L222,200 L226,232 L188,236 Z"/>
+            <path d="M234,202 L274,200 L278,232 L236,234 Z"/>
+            <path d="M286,202 L320,202 L324,234 L290,236 Z"/>
+            <path d="M180,244 L222,244 L224,272 L184,276 Z"/>
+            <path d="M280,244 L322,244 L324,272 L284,276 Z"/>
+            <path d="M180,284 L222,284 L226,318 L186,318 Z"/>
+            <path d="M232,284 L276,284 L278,318 L234,318 Z"/>
+            <path d="M284,284 L322,284 L322,318 L284,318 Z"/>
+          </g>
+
+          <!-- STREETS - secondary grid (horizontal) -->
+          <g stroke="rgba(255,255,255,.14)" stroke-width=".8" fill="none" stroke-linecap="butt">
+            <path d="M0 54 L480 54"/>
+            <path d="M0 88 L480 88"/>
+            <path d="M0 126 L480 126"/>
+            <path d="M0 164 L160 164 M328 164 L480 164"/>
+            <path d="M0 204 L160 204 M328 204 L480 204"/>
+            <path d="M0 244 L160 244 M328 244 L480 244"/>
+            <path d="M0 284 L160 284 M328 284 L480 284"/>
+            <path d="M0 322 L480 322"/>
+            <path d="M0 358 L480 358"/>
+            <path d="M0 396 L480 396"/>
+            <path d="M0 434 L480 434"/>
+            <path d="M0 472 L480 472"/>
+          </g>
+
+          <!-- STREETS - secondary grid (vertical) -->
+          <g stroke="rgba(255,255,255,.12)" stroke-width=".8" fill="none">
+            <path d="M62 0 L62 600"/>
+            <path d="M108 0 L108 600"/>
+            <path d="M152 0 L152 200 M152 320 L152 600"/>
+            <path d="M328 0 L328 200 M328 320 L328 600"/>
+            <path d="M374 0 L374 600"/>
+            <path d="M418 0 L418 600"/>
+          </g>
+
+          <!-- OLD TOWN inner streets -->
+          <g stroke="rgba(255,255,255,.20)" stroke-width=".9" fill="none">
+            <path d="M180 200 L322 202"/>
+            <path d="M180 238 L324 240"/>
+            <path d="M180 278 L322 280"/>
+            <path d="M226 200 L226 320"/>
+            <path d="M280 200 L282 320"/>
+          </g>
+
+          <!-- RADIAL AVENUES from center -->
+          <g stroke="rgba(255,255,255,.30)" stroke-width="1.4" fill="none" stroke-linecap="butt">
+            <path d="M252 252 L420 70"/>
+            <path d="M260 252 L478 252"/>
+            <path d="M256 264 L470 480"/>
+            <path d="M250 268 L256 600"/>
+            <path d="M228 268 L130 580"/>
+            <path d="M222 252 L8 252"/>
+            <path d="M226 240 L62 60"/>
+            <path d="M248 232 L262 0"/>
+          </g>
+
+          <!-- OUTER ring road (Alleenring) -->
+          <ellipse cx="250" cy="252" rx="172" ry="148"
+                   fill="none" stroke="rgba(91,176,207,.40)" stroke-width="1.6"/>
+
+          <!-- INNER ring road (Grabenring) -->
+          <ellipse cx="250" cy="252" rx="92" ry="76"
+                   fill="none" stroke="rgba(91,176,207,.55)" stroke-width="1.4"/>
+
+          <!-- RAIL LINE (dashed) -->
+          <path d="M0 348 L 130 340 L 175 330 L 200 318"
+                fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1" stroke-dasharray="4 4"/>
+
+          <!-- LANDMARKS -->
+          <g>
+            <circle cx="226" cy="244" r="3.5" fill="rgba(91,176,207,.65)" stroke="rgba(255,255,255,.7)" stroke-width=".7"/>
+            <rect x="260" y="230" width="5" height="5" fill="rgba(255,255,255,.55)"/>
+            <circle cx="196" cy="320" r="3" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1"/>
+          </g>
+
+          <!-- Street labels (mono micro) -->
+          <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="6.4" fill="rgba(255,255,255,.55)" letter-spacing=".14em">
+            <text x="246" y="196">MARKT</text>
+            <text x="152" y="160" transform="rotate(-30 152 160)">PONTSTR.</text>
+            <text x="308" y="144" transform="rotate(46 308 144)">JÜLICHER</text>
+            <text x="340" y="248">ADALBERT</text>
+            <text x="302" y="362" transform="rotate(40 302 362)">TRIERER</text>
+            <text x="152" y="360" transform="rotate(-44 152 360)">LÜTTICHER</text>
+            <text x="96" y="248">VAALSER</text>
+            <text x="138" y="122" transform="rotate(-46 138 122)">ROERMONDER</text>
+            <text x="172" y="316" fill="rgba(255,255,255,.45)">HBF</text>
+            <text x="212" y="258" fill="rgba(91,176,207,.85)" font-weight="500">DOM</text>
+            <text x="268" y="226" fill="rgba(255,255,255,.5)">RATHAUS</text>
+          </g>
+        </svg>
+
+        <div class="map-card__corner-top">
+          <span>50°46′31″&nbsp;N · 6°05′02″&nbsp;E</span>
+          <span><b>HQ</b> · Markt 45</span>
+        </div>
+
+        <div class="map-card__pin">
+          <div class="map-card__dot"></div>
+          <div class="map-card__city">Markt 45</div>
+          <div class="map-card__sub">Aachen · <b>seit 2005</b></div>
+        </div>
+
+        <div class="map-card__scale" aria-hidden="true">
+          <span class="map-card__scale-bar"></span>
+          <span>500&nbsp;m</span>
+        </div>
+        <div class="map-card__north" aria-hidden="true">N</div>
+
+        <div class="map-card__corner-bot">
+          <span>DEU · NRW</span>
+          <span><b>CanControls</b> GmbH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AWARDS ============ -->
+<section class="awards" id="anerkennung" aria-label="Anerkennung">
+  <div class="container">
+    <div class="awards__head">
+      <span class="label">006 — Anerkennung</span>
+      <h2>Ausgezeichnet seit<br/>den <em>Anfängen.</em></h2>
+      <p class="awards__lead">Wettbewerbe, Stiftungen und Industriepartner haben unseren Weg seit der Gründung begleitet.</p>
+    </div>
+    <div class="awards__grid">
+      <article class="award">
+        <div class="award__top">
+          <span class="award__year">2005</span>
+          <img class="award__logo" src="media/NUK-Logo.jpg" alt="NUK" loading="lazy" />
+        </div>
+        <h3 class="award__title">NUK <em>Businessplan</em></h3>
+        <p class="award__desc">Dreistufiger Wettbewerb der Initiative „Neues Unternehmertum Rheinland".</p>
+      </article>
+      <article class="award">
+        <div class="award__top">
+          <span class="award__year">2006</span>
+          <img class="award__logo" src="media/Integrata-Stiftung.jpg" alt="Integrata-Stiftung" loading="lazy" />
+        </div>
+        <h3 class="award__title">Wolfgang <em>Heilmann Preis</em></h3>
+        <p class="award__desc">Integrata-Stiftung für humane Nutzung der Informationstechnologie.</p>
+      </article>
+      <article class="award">
+        <div class="award__top">
+          <span class="award__year">2006</span>
+          <img class="award__logo" src="media/StartUp-2006.png" alt="StartUp Wettbewerb" loading="lazy" />
+        </div>
+        <h3 class="award__title">Deutscher <em>Gründerpreis</em></h3>
+        <p class="award__desc">Zweiter Platz im Landeswettbewerb — bedeutendste Auszeichnung für junge Unternehmen.</p>
+      </article>
+      <article class="award">
+        <div class="award__top">
+          <span class="award__year">2007</span>
+          <img class="award__logo" src="media/Innovationspreis-Aachen-2007.jpg" alt="Innovationspreis Region Aachen" loading="lazy" />
+        </div>
+        <h3 class="award__title">Innovationspreis<br/><em>Region Aachen</em></h3>
+        <p class="award__desc">Zweiter Platz für besondere unternehmerische Leistungen.</p>
+      </article>
+      <article class="award">
+        <div class="award__top">
+          <span class="award__year">2008</span>
+          <img class="award__logo" src="media/Innovationspreis-Mittelstand-2008.jpg" alt="Innovationspreis Mittelstand" loading="lazy" />
+        </div>
+        <h3 class="award__title">Innovationspreis<br/><em>Mittelstand</em></h3>
+        <p class="award__desc">Jährliche Auszeichnung der Initiative Mittelstand im IT-Sektor.</p>
+      </article>
+      <article class="award award--partner">
+        <span class="award__year">Seit 2008</span>
+        <h3 class="award__title">Microsoft<br/><em>„unternimm was."</em></h3>
+        <p class="award__desc">Mitglied im Netzwerk für junge Hightech-Unternehmen — Workshops, Partner, Technologie.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOBS ============ -->
+<section class="jobs" id="stellen" aria-label="Karriere">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="label">007 — Karriere</span>
+        <h2>Werde Teil unseres<br/><em>Teams.</em></h2>
+      </div>
+      <div class="sec-head__meta">
+        <b>„Wer in die Fußstapfen anderer tritt, hinterlässt keine Spuren."</b>
+        Wir suchen Menschen, die neue Wege gehen und das Unmögliche realisieren wollen.
+      </div>
+    </div>
+    <div class="jobs__grid">
+      <article class="job">
+        <span class="job__ix">01 — Festanstellung</span>
+        <h3 class="job__title">C++ <em>Software</em></h3>
+        <p class="job__desc">Erfahrene Entwickler:innen oder Junior-Kandidat:innen mit starkem Interesse an Bildverarbeitung.</p>
+        <a href="mailto:info@cancontrols.com?subject=Festanstellung%20C%2B%2B" class="job__cta">Anfragen</a>
+      </article>
+      <article class="job">
+        <span class="job__ix">02 — Abschlussarbeit</span>
+        <h3 class="job__title">Bachelor / <em>Master</em></h3>
+        <p class="job__desc">Themen aus Gesichts-, Mimik- und Gestenanalyse — individuell auf deine Interessen zugeschnitten.</p>
+        <a href="mailto:info@cancontrols.com?subject=Abschlussarbeit" class="job__cta">Anfragen</a>
+      </article>
+      <article class="job">
+        <span class="job__ix">03 — Werkstudent</span>
+        <h3 class="job__title">HiWi · <em>Werkstudent</em></h3>
+        <p class="job__desc">Annotation oder Programmierung parallel zum Studium. Vorkenntnisse je nach Aufgabe willkommen.</p>
+        <a href="mailto:info@cancontrols.com?subject=Werkstudent" class="job__cta">Anfragen</a>
+      </article>
+      <article class="job">
+        <span class="job__ix">04 — Praktikum</span>
+        <h3 class="job__title">Schule · <em>Pflicht</em></h3>
+        <p class="job__desc">Vom zweiwöchigen Schulpraktikum bis zum sechsmonatigen Pflichtpraktikum — sprich uns gerne an.</p>
+        <a href="mailto:info@cancontrols.com?subject=Praktikum" class="job__cta">Anfragen</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact on-dark" id="kontakt">
+  <div class="container">
+    <div class="contact__inner">
+      <div>
+        <span class="label label--on-dark">008 — Kontakt</span>
+        <h2>Erzählen Sie uns<br/>von Ihrer <em>Vision.</em></h2>
+        <p class="lead">
+          Sie suchen außergewöhnliche Lösungen für außergewöhnliche Probleme? Sprechen Sie mit uns — wir freuen uns auf den Austausch und finden gemeinsam den passenden Ansatz.
+        </p>
+      </div>
+
+      <form class="contact-form" onsubmit="return cfSubmit(event,this)" novalidate>
+        <div class="contact-form__row">
+          <label class="contact-form__field">
+            <span class="contact-form__label">Name</span>
+            <input class="contact-form__input" type="text" name="name" required autocomplete="name" />
+          </label>
+          <label class="contact-form__field">
+            <span class="contact-form__label">E-Mail</span>
+            <input class="contact-form__input" type="email" name="email" required autocomplete="email" />
+          </label>
+        </div>
+        <label class="contact-form__field">
+          <span class="contact-form__label">Betreff</span>
+          <input class="contact-form__input" type="text" name="subject" required />
+        </label>
+        <label class="contact-form__field">
+          <span class="contact-form__label">Nachricht</span>
+          <textarea class="contact-form__textarea" name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="contact-form__submit">Nachricht senden <span class="btn__arrow" aria-hidden="true"></span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="media/CCLogo.png" alt="CanControls" style="display:block;height:38px;width:auto;margin-bottom:20px;filter:brightness(0) invert(1)" />
+        <p>The Art of Image Understanding. Außergewöhnliche Lösungen aus Aachen — seit 2005.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Unternehmen</div>
+        <ul>
+          <li><a href="#unternehmen">Über uns</a></li>
+          <li><a href="#stellen">Karriere</a></li>
+          <li><a href="#unternehmen">Standort</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Leistungen</div>
+        <ul>
+          <li><a href="#technologie">Technologie</a></li>
+          <li><a href="#bereiche">Anwendungsbereiche</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <ul>
+          <li><a href="mailto:info@cancontrols.com">info@cancontrols.com</a></li>
+          <li><a href="tel:+4924147582260">+49 241 47582260</a></li>
+          <li>Markt 45 · 52062 Aachen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© <span id="yr">2025</span> CanControls GmbH</div>
+      <div class="footer__legal">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // contact form: open mail client pre-filled (prototype-grade — production should POST to backend)
+  function cfSubmit(e, form){
+    e.preventDefault();
+    const d = new FormData(form);
+    const body = `${d.get('message')}\n\n--\n${d.get('name')}\n${d.get('email')}`;
+    window.location.href = 'mailto:info@cancontrols.com?subject=' + encodeURIComponent(d.get('subject') || 'Anfrage') + '&body=' + encodeURIComponent(body);
+    return false;
+  }
+
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('nav');
+  const heroImg = document.querySelector('.hero__img');
+  const hero = document.querySelector('.hero');
+  const footerEl = document.querySelector('.footer');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll-spy data
+  const navLinks = Array.from(document.querySelectorAll('.nav__links a[href^="#"], .nav__mobile-links a[href^="#"]'));
+  const linkMap = {};
+  navLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    (linkMap[id] = linkMap[id] || []).push(a);
+  });
+  const trackedIds = Object.keys(linkMap).filter(id => document.getElementById(id));
+  function clearActive(){ navLinks.forEach(a => a.classList.remove('is-active')); }
+  function updateActive(){
+    const y = window.scrollY || 0;
+    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 120 : 0;
+    const footerTop = footerEl ? footerEl.offsetTop - 160 : Infinity;
+    if (y < heroBottom || y > footerTop){ clearActive(); return; }
+    const trigger = y + Math.min(220, window.innerHeight * 0.35);
+    let current = null;
+    trackedIds.forEach(id => {
+      const top = document.getElementById(id).offsetTop;
+      if (top <= trigger) current = id;
+    });
+    clearActive();
+    if (current && linkMap[current]) linkMap[current].forEach(a => a.classList.add('is-active'));
+  }
+
+  // nav scroll state + hero parallax
+  let ticking = false;
+  function onScroll(){
+    const y = window.scrollY || 0;
+    const t = window.innerWidth >= 1024 ? 100 : 160;
+    nav.classList.toggle('scrolled', y > t);
+    if (heroImg && !reduceMotion) {
+      heroImg.style.transform = 'translate3d(0,' + (y * 0.5) + 'px,0)';
+    }
+    updateActive();
+  }
+  function requestTick(){
+    if (!ticking){ requestAnimationFrame(() => { onScroll(); ticking = false; }); ticking = true; }
+  }
+  onScroll();
+  window.addEventListener('scroll', requestTick, {passive:true});
+  window.addEventListener('resize', onScroll);
+
+  // hero marquee — rAF auto-scroll with touch/drag override.
+  // Drag follows finger 1:1, then auto-scroll resumes from current position
+  // (no snap-back). Wrapping uses modulo of "half" so duplicates are seamless.
+  const marquee = document.getElementById('marquee');
+  if (marquee) {
+    const track = marquee.querySelector('.hero__marquee-track');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const SPEED = 65;        // px / second (faster than before)
+    let pos = 0;             // current translateX, always <= 0
+    let half = 0;            // width of one copy
+    let lastT = 0;
+    let dragging = false;
+    let startX = 0, startPos = 0;
+    let velocity = 0;        // px/sec, set on release for fling
+    let flingT = 0;
+
+    function measure(){
+      // half = width of one copy (the track contains exactly 2 identical copies)
+      half = track.scrollWidth / 2 || 1;
+    }
+    measure();
+    // re-measure after fonts load and on resize — first measurement before
+    // fonts are ready gives wrong width and causes visible overlap
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(measure);
+    }
+    window.addEventListener('load', measure);
+    setTimeout(measure, 400);
+    setTimeout(measure, 1200);
+    window.addEventListener('resize', measure);
+    if (window.ResizeObserver){
+      const ro = new ResizeObserver(measure);
+      ro.observe(track);
+    }
+
+    function wrap(p){
+      // keep p in (-half, 0]
+      if (half <= 0) return p;
+      p = p % half;
+      if (p > 0) p -= half;
+      return p;
+    }
+
+    function frame(t){
+      if (!lastT) lastT = t;
+      const dt = Math.min(0.05, (t - lastT) / 1000);
+      lastT = t;
+      if (!dragging) {
+        let speed = SPEED;
+        // fling: blend velocity to SPEED over ~600ms after release
+        if (flingT > 0) {
+          const k = Math.min(1, (t - flingT) / 600);
+          speed = velocity * (1 - k) + (-SPEED) * k;
+          // velocity is signed px/sec; SPEED scrolls left = negative direction
+          pos += speed * dt;
+          if (k >= 1) { flingT = 0; velocity = -SPEED; }
+        } else {
+          pos -= SPEED * dt;
+        }
+        pos = wrap(pos);
+        track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    if (!reduce) requestAnimationFrame(frame);
+
+    let lastMoveX = 0, lastMoveT = 0;
+    function down(e){
+      dragging = true;
+      marquee.classList.add('dragging');
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      startX = x; startPos = pos;
+      lastMoveX = x; lastMoveT = performance.now();
+      velocity = 0; flingT = 0;
+    }
+    function move(e){
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      const now = performance.now();
+      const dt = (now - lastMoveT) / 1000;
+      if (dt > 0) velocity = (x - lastMoveX) / dt;   // signed px/sec
+      lastMoveX = x; lastMoveT = now;
+
+      pos = wrap(startPos + (x - startX));
+      track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      if (e.cancelable && Math.abs(x - startX) > 4) e.preventDefault();
+    }
+    function up(){
+      if (!dragging) return;
+      dragging = false;
+      marquee.classList.remove('dragging');
+      // clamp fling velocity
+      const max = 1400, min = -1400;
+      if (velocity > max) velocity = max;
+      if (velocity < min) velocity = min;
+      flingT = performance.now();
+      lastT = 0;
+    }
+    marquee.addEventListener('touchstart', down, {passive:true});
+    marquee.addEventListener('touchmove',  move, {passive:false});
+    marquee.addEventListener('touchend',   up);
+    marquee.addEventListener('touchcancel',up);
+    marquee.addEventListener('mousedown',  down);
+    window.addEventListener('mousemove',   move);
+    window.addEventListener('mouseup',     up);
+    window.addEventListener('blur',        up);
+  }
+  const burger = document.getElementById('burger');
+  const mobile = document.getElementById('mobile-menu');
+  function setMobile(open){
+    burger.classList.toggle('open', open);
+    mobile.classList.toggle('open', open);
+    nav.classList.toggle('mobile-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setMobile(!mobile.classList.contains('open')));
+  mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMobile(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobile.classList.contains('open')) setMobile(false); });
+  document.addEventListener('click', e => {
+    if (mobile.classList.contains('open') && !mobile.contains(e.target) && !burger.contains(e.target)) setMobile(false);
+  });
+
+  // language flag toggles (visual-only)
+  document.querySelectorAll('.nav__flag,.nav__mobile-flag').forEach(b => {
+    b.addEventListener('click', () => {
+      const peers = b.classList.contains('nav__mobile-flag')
+        ? document.querySelectorAll('.nav__mobile-flag')
+        : document.querySelectorAll('.nav__flag');
+      peers.forEach(p => { p.classList.remove('is-active'); p.setAttribute('aria-pressed','false'); });
+      b.classList.add('is-active'); b.setAttribute('aria-pressed','true');
+    });
+  });
+</script>
+<div class="demobar" id="demobar">
+  <span>Redesign-Entwurf, kein offizieller Auftritt von <b>CanControls GmbH</b>. <a href="hinweise.html" target="_blank" rel="noopener">Was ist anders?</a> <span class="demobar__sep">&middot;</span> <a href="https://www.cancontrols.com/" target="_blank" rel="noopener">Originalseite</a></span>
+  <button id="demoClose" aria-label="Hinweis schließen">&times;</button>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('demobar'),btn=document.getElementById('demoClose');
+  if(!bar||!btn)return;
+  if(sessionStorage.getItem('demobar-hidden')==='1'){bar.classList.add('hide');return}
+  btn.addEventListener('click',function(){bar.classList.add('hide');sessionStorage.setItem('demobar-hidden','1')});
+})();
+</script>
+</body>
+</html>
